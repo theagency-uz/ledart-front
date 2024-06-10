@@ -1,0 +1,25 @@
+.lang_switch :global(input) {
+}
+.lang_switch :global(.MuiSelect-select) {
+  font-size: var(--font16);
+  font-weight: 500;
+  color: #fff;
+  font-family: "Magistral";
+  padding: 0 20px 0 0 !important;
+}
+.lang_switch :global(.Mui-selected) {
+  background-color: #00000040;
+}
+.lang_switch :global(li) {
+  font-family: "Magistral" !important;
+  color: #fff;
+  font-size: var(--font16);
+}
+
+.lang_switch :global(.MuiSvgIcon-root) {
+  color: #fff;
+  right: -6px;
+}
+.lang_switch :global(.MuiOutlinedInput-notchedOutline) {
+  border: none !important;
+}

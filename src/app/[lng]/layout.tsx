@@ -54,7 +54,8 @@ export default function RootLayout({
           shadow="0 0 10px #fff,0 0 5px #fff"
         />
         <Header lng={lng} />
-        {children}
+        <div className="layout">{children}</div>
+
         <Footer lng={lng} />
 
         {/* for google translate */}

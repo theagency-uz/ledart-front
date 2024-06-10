@@ -6,9 +6,5 @@ interface PropsInterface {
 }
 
 export default async function Home({ params: { lng } }: PropsInterface) {
-  return (
-    <div>
-      <Card />
-    </div>
-  );
+  return <div>home</div>;
 }

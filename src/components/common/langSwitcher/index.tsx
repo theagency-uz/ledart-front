@@ -1,21 +1,47 @@
 "use client";
-import { usePathname } from "next/navigation";
+import { FormControl, MenuItem, Select } from "@mui/material";
+import { usePathname, useRouter } from "next/navigation";
+import { useState } from "react";
+import classes from "./styles.module.css";
 
-export default function LangSwitcher({ lng }: { lng: string }) {
+export default function LangSwitcher({
+  lng,
+  backColor = "#6219a5",
+}: {
+  lng: string;
+  backColor?: string;
+}) {
+  const [locale, setLocale] = useState(lng);
   const pathName = usePathname();
+  const router = useRouter();
 
   const redirectedPathName = (locale: string) => {
-    if (!pathName) return "/";
-    const segments = pathName.split("/");
-    segments[1] = locale;
-    return segments.join("/");
+    setLocale(locale);
+    const newPath = `/${locale}${pathName.slice(3, pathName.length)}`;
+    router.push(newPath);
   };
 
   return (
-    <div className={` notranslate`}>
-      <a href={redirectedPathName("ru")}>Ru</a>
-      <a href={redirectedPathName("uz")}>Uz</a>
-      <a href={redirectedPathName("en")}>En</a>
+    <div className={classes.lang_switch}>
+      <Select
+        MenuProps={{
+          disablePortal: true,
+          disableScrollLock: true,
+        }}
+        labelId="demo-simple-select-standard-label"
+        id="demo-simple-select-standard"
+        defaultValue={lng}
+        value={locale}
+        onChange={(e) => redirectedPathName(e.target.value)}
+        sx={{
+          ".MuiPaper-root": {
+            backgroundColor: backColor,
+          },
+        }}
+      >
+        <MenuItem value={"uz"}>uz</MenuItem>
+        <MenuItem value={"ru"}>ru</MenuItem>
+      </Select>
     </div>
   );
 }

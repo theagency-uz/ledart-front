@@ -1,0 +1,21 @@
+.button_component {
+  padding: 18px 44px;
+  background-color: #441db5;
+  font-size: var(--font14);
+  font-weight: 400;
+  border-radius: 50px;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+  color: #fff;
+  display: block;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.button_component:hover {
+  background-color: #fff;
+  color: #441db5;
+  border: 1px solid #441db5;
+}
