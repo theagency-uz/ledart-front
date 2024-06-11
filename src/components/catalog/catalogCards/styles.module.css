@@ -1,0 +1,11 @@
+.cards_wrapper {
+  display: grid;
+  grid-template-columns: 20% 80%;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 40px;
+}

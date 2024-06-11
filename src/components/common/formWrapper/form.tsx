@@ -17,7 +17,7 @@ export default function Form() {
             <div className={classes.form_input}>
                 <input type="text" placeholder="+998 ( )" />
             </div>
-            <Button>
+            <Button className={classes.btn}>
                 Получить консультацию
             </Button>
         </div>

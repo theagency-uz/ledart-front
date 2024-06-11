@@ -45,6 +45,10 @@
   outline: none;
 }
 
+.btn {
+  padding: 18px 44px;
+}
+
 @media (max-width: 1199px) {
   .form_wrapper {
     gap: 60px;

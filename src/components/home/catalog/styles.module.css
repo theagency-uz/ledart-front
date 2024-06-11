@@ -1,0 +1,40 @@
+.catalog {
+}
+.catalog h2 {
+  font-size: var(--font14);
+  font-weight: 400;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.card_1 {
+  grid-area: 1 / 1 / 2 / 3;
+}
+.card_2 {
+  grid-area: 1 / 3 / 2 / 5;
+}
+.card_3 {
+  grid-area: 1 / 5 / 2 / 7;
+}
+.card_4 {
+  grid-area: 2 / 1 / 3 / 4;
+}
+.card_5 {
+  grid-area: 2 / 4 / 3 / 7;
+}
+
+.card {
+  flex: 1;
+}
+.card h3 {
+}
+.card p {
+}
+.card img {
+  height: 194px;
+  width: auto;
+  margin-left: auto;
+}
