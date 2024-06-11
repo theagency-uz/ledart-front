@@ -1,7 +1,13 @@
 import Link from "next/link";
 import classes from "./styles.module.css";
 
-async function BreadCrumbs({ lng, links, ...props }) {
+interface linkInterface {
+  name: string,
+  link: string,
+  id: string,
+}
+
+async function BreadCrumbs({ lng, links, ...props }: { lng: string, links: linkInterface[], }) {
   return (
     <div className={classes.breadCrumbs}>
       <Link className={classes.link} href={`/${lng}`}>

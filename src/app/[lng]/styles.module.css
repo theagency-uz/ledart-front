@@ -1,0 +1,14 @@
+.home {
+  margin-top: -124px;
+}
+
+@media (max-width: 1500px) {
+  .home {
+    margin-top: -110px;
+  }
+}
+@media (max-width: 1440px) {
+  .home {
+    margin-top: -94px;
+  }
+}

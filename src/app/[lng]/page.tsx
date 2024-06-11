@@ -1,10 +1,16 @@
-import Card from "@/components/common/card/card";
-import { useTranslation } from "../i18n";
+import Hero from "@/components/home/hero/hero";
+
+import classes from "./styles.module.css"
 
 interface PropsInterface {
   params: { lng: string };
 }
 
 export default async function Home({ params: { lng } }: PropsInterface) {
-  return <div>home</div>;
+
+  return (
+    <main className={classes.home}>
+      <Hero lng={lng} />
+    </main>
+  );
 }

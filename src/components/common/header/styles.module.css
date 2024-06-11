@@ -15,6 +15,21 @@
   border-radius: 100px;
   z-index: 10;
 }
+
+.header_home {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  padding: 5px 60px;
+  color: #fff;
+  border-radius: 100px;
+  z-index: 10;
+}
+
 .navs_wrapper,
 .logo_wrapper,
 .social_media {

@@ -1,20 +1,44 @@
+"use client"
 import Link from "next/link";
 import LangSwitcher from "../langSwitcher";
 
 import classes from "./styles.module.css";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+
 
 interface PropsInterface {
   lng: string;
 }
 
 export default function Header({ lng }: PropsInterface) {
+  const path = usePathname()
+  const [scrollStyle, setScrollStyle] = useState<string>("header_home");
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition =
+        window.scrollY || document.documentElement.scrollTop;
+      if (scrollPosition > 0) {
+        setScrollStyle("header");
+      } else {
+        setScrollStyle("header_home");
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
+
   return (
-    <div className={classes.header}>
+    <div className={path === `/${lng}` ? classes[scrollStyle] : classes.header}>
       <div className={classes.navs_wrapper}>
         <LangSwitcher lng={lng} />
         <div className={classes.navs}>
-          <Link href="">Каталог</Link>
-          <Link href="">О нас</Link>
+          <Link href={`/${lng}/catalog`}>Каталог</Link>
+          <Link href={`/${lng}/about`}>О нас</Link>
           <Link href={`/${lng}/contacts`}>Контакты</Link>
         </div>
       </div>
