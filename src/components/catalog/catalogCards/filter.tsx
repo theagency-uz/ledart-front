@@ -1,77 +1,41 @@
-'use client';
-import { ToggleButton, ToggleButtonGroup } from '@mui/material';
-import RadioIcon from './radioIcon';
+"use client";
+import { ToggleButton, ToggleButtonGroup } from "@mui/material";
+import RadioIcon from "./radioIcon";
 
-import classes from './styles.module.css';
-import { Dispatch, SetStateAction, useEffect, useState } from 'react';
-import {
-  BrandInterface,
-  CategoryInterface,
-  FilterInterface,
-} from '@/types/interfaces';
-import { useRouter } from 'next/navigation';
-import { useSearchParams } from 'next/navigation';
+import classes from "./styles.module.css";
+import { useRouter } from "next/navigation";
+import { useSearchParams } from "next/navigation";
+import { BrandInterface, CategoryInterface } from "@/types/interfaces";
+import { Dispatch, SetStateAction, useState } from "react";
 
-export default function FilterCards({
-  lng,
-  setFilter,
-  filter,
-  categories,
-  products,
-  category,
-  brands,
-}: {
-  lng: string;
-  setFilter: Dispatch<SetStateAction<FilterInterface>>;
-  filter: FilterInterface;
+interface FilterCardsInterface {
   categories: CategoryInterface[];
-  products: any;
   category: CategoryInterface;
   brands: BrandInterface[];
+  categorySlug: string;
+  selectedBrands: string;
+  lng: string;
+}
+
+export default function FilterCards({
+  props,
+  setSelectedBrand,
+  selectedBrand,
+}: {
+  props: FilterCardsInterface;
+  setSelectedBrand: Dispatch<SetStateAction<number[]>>;
+  selectedBrand: number[];
 }) {
+  const { categories, category, brands, categorySlug, selectedBrands, lng } =
+    props;
   const router = useRouter();
-  const searchParams = useSearchParams();
-  console.log(searchParams.get('categorySlug'));
 
-  const [types, setTypes] = useState<BrandInterface[]>();
-
-  useEffect(() => {
-    (async () => {
-      // setTypes(types);
-    })();
-  }, []);
-
-  const toggleArrayValue = (key: keyof FilterInterface, value: number) => {
-    setFilter((prevFilter) => {
-      let updatedArray = [...(prevFilter[key] as number[])];
-
-      if (updatedArray.includes(value)) {
-        updatedArray = updatedArray.filter((item) => item !== value);
-      } else {
-        updatedArray.push(value);
-      }
-
-      const uniqueSortedArray = Array.from(new Set(updatedArray)).sort(
-        (a, b) => a - b
-      );
-
-      return {
-        ...prevFilter,
-        [key]: uniqueSortedArray,
-      };
-    });
+  const handleChangeCategory = (e: any) => {
+    router.push(`?categorySlug=${e.target.value}`);
   };
 
-  const handleToggleChange =
-    (key: keyof FilterInterface) =>
-    (event: React.MouseEvent<HTMLElement>, newAlignment: number) => {
-      toggleArrayValue(key, newAlignment);
-    };
-  const handleChangeCategory = (
-    event: React.MouseEvent<HTMLElement>,
-    value: string
-  ) => {
-    router.push(`?categorySlug=${value}`);
+  const handleChangeBrands = (v: number[]) => {
+    setSelectedBrand(v);
   };
 
   return (
@@ -80,7 +44,6 @@ export default function FilterCards({
       <ToggleButtonGroup
         className={classes.filter}
         onChange={handleChangeCategory}
-        // value={filter.brands}
         exclusive
       >
         <p>Категории</p>
@@ -91,11 +54,11 @@ export default function FilterCards({
                 <ToggleButton
                   key={id}
                   value={slug}
-                  aria-label='bold'
+                  aria-label="bold"
                   disableRipple={true}
                   className={classes.filter_btn}
                 >
-                  <RadioIcon selected={'' === slug} />
+                  <RadioIcon selected={categorySlug === slug} />
 
                   {name}
                 </ToggleButton>
@@ -133,32 +96,27 @@ export default function FilterCards({
                     : null}
 
             </ToggleButtonGroup> */}
-
       <ToggleButtonGroup
+        value={selectedBrand}
+        onChange={(e, v) => {
+          handleChangeBrands(v);
+        }}
+        aria-label="brand"
         className={classes.filter}
-        onChange={handleToggleChange('brands')}
-        value={filter.brands}
-        exclusive
       >
-        <p>Бренд</p>
-        {brands && brands.length
-          ? brands.map(({ id, attributes }) => {
-              const { name } = attributes;
-              return (
-                <ToggleButton
-                  key={id}
-                  value={id}
-                  aria-label='bold'
-                  disableRipple={true}
-                  className={classes.filter_btn}
-                >
-                  <RadioIcon selected={filter.brands.includes(id)} />
+        {brands.map((brand) => (
+          <ToggleButton
+            value={brand.id}
+            key={brand.id}
+            aria-label="bold"
+            disableRipple={true}
+            className={classes.filterBtn}
+          >
+            <RadioIcon selected={selectedBrand.includes(brand.id)} />
 
-                  {name}
-                </ToggleButton>
-              );
-            })
-          : null}
+            {brand.attributes.name}
+          </ToggleButton>
+        ))}
       </ToggleButtonGroup>
     </div>
   );
