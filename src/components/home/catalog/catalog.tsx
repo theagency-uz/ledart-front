@@ -1,50 +1,53 @@
-"use client"
-import Container from "@/components/common/container/container"
-import classes from "./styles.module.css"
-import Image from "next/image"
+"use client";
+import Container from "@/components/common/container/container";
+import classes from "./styles.module.css";
+import Image from "next/image";
+import RoundButton from "@/components/common/roundButton/button";
+import { useEffect, useState } from "react";
+import { getCategories } from "@/services/category";
+import { CategoryInterface } from "@/types/interfaces";
+import { strapiImageUrl } from "@/utils/endpoints";
 
 export default function Catalog({ lng }: { lng: string }) {
-    const data = [
-        {
-            h: "Наружные",
-            p: "Контроллеры, видеопроцессоры, источники питания",
-            image: "/images/catalog/1.png"
-        },
-        {
-            h: "Наружные",
-            p: "Контроллеры, видеопроцессоры, источники питания",
-            image: "/images/catalog/2.png"
-        },
-        {
-            h: "Наружные",
-            p: "Контроллеры, видеопроцессоры, источники питания",
-            image: "/images/catalog/3.png"
-        },
-        {
-            h: "Наружные",
-            p: "Контроллеры, видеопроцессоры, источники питания",
-            image: "/images/catalog/4.png"
-        },
-        {
-            h: "Наружные",
-            p: "Контроллеры, видеопроцессоры, источники питания",
-            image: "/images/catalog/5.png"
-        },
-    ]
+    const [category, setCategory] = useState<CategoryInterface[]>();
+
+    useEffect(() => {
+        (async () => {
+            const tempCategory = await getCategories({ lng, limit: 5 });
+
+            setCategory(tempCategory);
+        })()
+    }, [])
+
     return (
         <Container className={classes.catalog}>
             <h2>Каталог товаров</h2>
             <div className={classes.cards}>
-                {data.map((el, index) => {
-                    return (
-                        <div className={`${classes.card} ${classes["card_" + (index + 1)]}`}>
-                            <h3>{el.h}</h3>
-                            <p>{el.p}</p>
-                            <Image src={el.image} alt="card" width={340} height={170} />
-                        </div>
+                {category && category.length ?
+                    (
+                        category.map(({ attributes }, index) => {
+                            const { name, slug, description, tag, image } = attributes
+                            return (
+                                <div
+                                    className={`${classes.card} ${classes["card_" + (index + 1)]}`}
+                                >
+                                    <RoundButton href={`/${lng}/catalog?categorySlug=${slug}`} className={classes.btn}>
+                                        <img src="/icons/arrow_top_right.svg" alt="arrow_top_right" />
+                                    </RoundButton>
+                                    <div>
+                                        <h3>{name}</h3>
+                                        <p>{description}</p>
+                                    </div>
+                                    <div className={classes.card_image}>
+                                        <Image src={strapiImageUrl + image.data.attributes.url} alt="card" width={340} height={170} />
+                                    </div>
+                                </div>
+                            );
+                        })
                     )
-                })}
+                    : ""}
+
             </div>
         </Container>
-    )
+    );
 }

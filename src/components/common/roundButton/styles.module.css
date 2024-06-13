@@ -1,0 +1,32 @@
+.button_component {
+  background-color: #441db5;
+  font-size: var(--font14);
+  font-weight: 400;
+  border-radius: 50%;
+  transition: 0.3s ease;
+  border: 1px solid transparent;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  aspect-ratio: 1/1;
+  height: auto;
+  width: 2.5vw;
+  transition: 0.2s ease-in;
+}
+
+.button_component img {
+  transition: 0.2s ease-in;
+  width: 30%;
+  object-fit: contain;
+}
+
+.button_component_animate:hover img {
+  transform: rotate(45deg);
+}
+
+@media (max-width: 1199px) {
+  .btn {
+    width: 30px;
+  }
+}

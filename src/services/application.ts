@@ -1,13 +1,11 @@
 import { strapi } from './httpService';
 
-async function postApplication({ name, phone, email, request, url, lng }) {
+async function postApplication({ name, phone, url, lng }: { name: string, phone: string, url: string, lng: string }) {
   try {
     const result = await strapi.post("/applications", {
       data: {
         name: name,
         phone: phone,
-        email: email,
-        request: request,
         information: `Язык: ${lng}, страница заявки: ${url}`
       }
     }, {
@@ -19,7 +17,6 @@ async function postApplication({ name, phone, email, request, url, lng }) {
 
   } catch (err) {
 
-    console.log("err: ", err.response);
     return { error: true, msg: err };
   }
 }

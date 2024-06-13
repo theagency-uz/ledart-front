@@ -1,17 +1,11 @@
 import { strapi } from './httpService';
 
-async function getBrands({ lng = "ru", categoryId }: { lng: string, categoryId: number }) {
+async function getBrands({ lng = "ru" }: { lng: string }) {
   try {
     const result = await strapi.get("/brands", {
       params: {
         locale: lng,
         populate: ['image'],
-        filters: {
-          categories: {
-            id: { "$in": categoryId }
-          }
-        }
-        // sort: ['createdAt:desc'],
       }
     });
     return result.data.data;

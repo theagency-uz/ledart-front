@@ -5,10 +5,7 @@ import { strapiImageUrl } from "@/utils/endpoints";
 import classes from "./page.module.css";
 import CatalogCards from "@/components/catalog/catalogCards/catalogCards";
 
-export async function generateMetadata({
-  params: { lng, categorySlug },
-  ...props
-}) {
+export async function generateMetadata({ params: { lng, categorySlug } }) {
   const category = await getCategory({ lng, slug: categorySlug });
 
   return {
@@ -22,25 +19,25 @@ export async function generateMetadata({
 }
 
 async function Catalog({
-  params: { lng, categorySlug },
-  searchParams: { page = 1 },
-  ...props
+  params: { lng },
+  searchParams: { page = 1, categorySlug, selectedBrands },
 }) {
-  const category = await getCategory({ lng, slug: categorySlug });
   const links = [
     {
-      name: ` ${"Каталог"} / ${
-        category?.attributes.tag ?? category?.attributes.name
-      }`,
-      link: `/${lng}/catalog/${category?.attributes.slug}`,
-      id: category?.attributes.slug,
+      name: ` ${"Каталог / Все товары"}`,
+      link: `/${lng}/catalog`,
+      id: "category?.attributes.slug",
     },
   ];
 
   return (
     <Container className={classes.catalog}>
       <BreadCrumbs links={links} lng={lng} />
-      <CatalogCards lng={lng} />
+      <CatalogCards
+        lng={lng}
+        categorySlug={categorySlug}
+        selectedBrands={selectedBrands}
+      />
     </Container>
   );
 }

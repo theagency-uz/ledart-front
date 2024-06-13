@@ -1,13 +1,27 @@
 .catalog {
+  background-color: #f7f7f7;
+  padding-block: 6.5vw 5vw;
 }
 .catalog h2 {
-  font-size: var(--font14);
+  font-size: var(--font35);
   font-weight: 400;
+  margin-bottom: 40px;
+  text-align: center;
 }
 .cards {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  gap: 1vw;
+}
+.card {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding-top: 1.6vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 2.5vw;
 }
 
 .card_1 {
@@ -26,15 +40,77 @@
   grid-area: 2 / 4 / 3 / 7;
 }
 
-.card {
-  flex: 1;
+.card_1,
+.card_2,
+.card_3 {
+  background-image: url("/icons/small.svg");
+  background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  aspect-ratio: 341/275;
 }
+.card_4,
+.card_5 {
+  background-position: right;
+  background-repeat: no-repeat;
+  background-image: url("/icons/bigger.svg");
+  background-size: cover;
+  aspect-ratio: 515/275;
+}
+
 .card h3 {
+  font-size: var(--font24);
+  font-weight: 400;
+  padding-inline: 2.1vw;
 }
 .card p {
+  font-size: var(--font14);
+  font-weight: 300;
+  color: #737373;
+  width: 80%;
+  padding-inline: 2.1vw;
+  margin-top: 10px;
 }
-.card img {
-  height: 194px;
-  width: auto;
-  margin-left: auto;
+.card_image {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  overflow: hidden;
+  border-bottom-left-radius: 2.5vw;
+  border-bottom-right-radius: 2.5vw;
+}
+.card_image img {
+  width: 100%;
+  height: auto;
+  object-position: bottom;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 1199px) {
+  .catalog {
+    padding-block: 79px 60px;
+  }
+  .card {
+    border-radius: 30px;
+    padding-top: 20px;
+  }
+  .card_image {
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+  }
+  .card h3 {
+    padding-inline: 25px;
+  }
+  .card p {
+    padding-inline: 25px;
+  }
 }

@@ -1,0 +1,32 @@
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.6vw;
+}
+.card {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 235/130;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("/icons/partnersBack.svg");
+  background-size: cover;
+  position: relative;
+}
+
+.card_image {
+  width: 90%;
+}
+
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+@media (max-width: 1199px) {
+  .cards {
+    gap: 20px;
+  }
+}

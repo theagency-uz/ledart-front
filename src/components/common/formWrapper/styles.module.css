@@ -44,7 +44,15 @@
   width: 100%;
   outline: none;
 }
+.form_input :global(.form-control) {
+  border: none !important;
+  height: fit-content !important;
+}
 
+.form_input :global(.flag-dropdown) {
+  border: none !important;
+  background-color: transparent !important;
+}
 .btn {
   padding: 18px 44px;
 }

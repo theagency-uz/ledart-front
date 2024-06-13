@@ -104,9 +104,7 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
       <div className={classes.map}>
         <MapYandex defaultCenter={[41.351642, 69.238926]} />
       </div>
-      <Container>
-        <FormWrapper lng={lng} />
-      </Container>
+      <FormWrapper lng={lng} />
     </div>
   );
 }

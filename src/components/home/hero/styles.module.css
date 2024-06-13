@@ -1,3 +1,7 @@
+.hero_wrapper {
+  background-color: #f7f7f7;
+}
+
 .hero {
   height: calc(100vh - 20px);
   margin-inline: 20px;
