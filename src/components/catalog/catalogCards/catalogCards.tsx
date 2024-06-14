@@ -9,6 +9,7 @@ import {
   ProductsInterface,
 } from "@/types/interfaces";
 import FilterCards from "./filter";
+import { getTypes } from "@/services/category";
 
 interface FilterCardsInterface {
   categories: CategoryInterface[];
@@ -24,8 +25,10 @@ export default function CatalogCards({
 }: {
   props: FilterCardsInterface;
 }) {
-  const { categorySlug, lng, selectedBrands } = props;
+  const { categorySlug, lng, selectedBrands, category } = props;
   const [products, setProducts] = useState<ProductsInterface>();
+  const [types, setTypes] = useState([]);
+  const [selectedType, setSelectedType] = useState("");
   const [selectedBrand, setSelectedBrand] = useState<number[]>(
     selectedBrands && selectedBrands.length ? JSON.parse(selectedBrands) : []
   );
@@ -33,11 +36,16 @@ export default function CatalogCards({
   useEffect(() => {
     (async () => {
       const products = await getProducts({ lng, categoryId: 3 });
-      console.log(products);
+      const types = await getTypes({
+        lng,
+        categoryId: category ? category.id : 0,
+      });
 
+      setTypes(types);
       setProducts(products);
     })();
-  }, [categorySlug]);
+    console.log({ selectedType, category, selectedBrand });
+  }, [categorySlug, selectedBrand, selectedType]);
 
   return (
     <div className={classes.cards_wrapper}>
@@ -45,14 +53,19 @@ export default function CatalogCards({
         props={props}
         setSelectedBrand={setSelectedBrand}
         selectedBrand={selectedBrand}
+        types={types}
+        setSelectedType={setSelectedType}
+        selectedType={selectedType}
       />
-      <div className={classes.cards}>
-        {products && products.data.length
-          ? products.data.map((el) => {
-              return <CatalogCard />;
-            })
-          : ""}
-      </div>
+      {products && products.data.length ? (
+        <div className={classes.cards}>
+          {products.data.map((card) => {
+            return <CatalogCard card={card} />;
+          })}
+        </div>
+      ) : (
+        <div className={classes.empty}>empty</div>
+      )}
     </div>
   );
 }

@@ -2,7 +2,7 @@ import BreadCrumbs from "@/components/common/breadCrumbs/breadCrumbs";
 import Container from "@/components/common/container/container";
 import classes from "./page.module.css";
 import CatalogCards from "@/components/catalog/catalogCards/catalogCards";
-import { getCategories, getCategory } from "@/services/category";
+import { getCategories, getCategory, getTypes } from "@/services/category";
 import { getBrands } from "@/services/brand";
 
 // export async function generateMetadata({

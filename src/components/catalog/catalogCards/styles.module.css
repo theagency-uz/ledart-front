@@ -17,3 +17,27 @@
   align-items: flex-start;
   border-radius: 0;
 }
+
+.empty {
+  height: 70vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter_wrapper {
+}
+.filter_wrapper_p {
+  font-size: var(--font14);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.filter {
+}
+.filter_p {
+}
+.filter_btn {
+}

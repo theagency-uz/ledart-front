@@ -1,12 +1,15 @@
 "use client";
 import { ToggleButton, ToggleButtonGroup } from "@mui/material";
 import RadioIcon from "./radioIcon";
+import { useRouter } from "next/navigation";
+import {
+  BrandInterface,
+  CategoryInterface,
+  TypeInterface,
+} from "@/types/interfaces";
+import { Dispatch, SetStateAction } from "react";
 
 import classes from "./styles.module.css";
-import { useRouter } from "next/navigation";
-import { useSearchParams } from "next/navigation";
-import { BrandInterface, CategoryInterface } from "@/types/interfaces";
-import { Dispatch, SetStateAction, useState } from "react";
 
 interface FilterCardsInterface {
   categories: CategoryInterface[];
@@ -21,10 +24,16 @@ export default function FilterCards({
   props,
   setSelectedBrand,
   selectedBrand,
+  types,
+  selectedType,
+  setSelectedType,
 }: {
   props: FilterCardsInterface;
-  setSelectedBrand: Dispatch<SetStateAction<number[]>>;
+  types?: TypeInterface[];
   selectedBrand: number[];
+  setSelectedBrand: Dispatch<SetStateAction<number[]>>;
+  selectedType?: string;
+  setSelectedType: Dispatch<SetStateAction<string>>;
 }) {
   const { categories, category, brands, categorySlug, selectedBrands, lng } =
     props;
@@ -39,14 +48,16 @@ export default function FilterCards({
   };
 
   return (
-    <div>
-      <p>Filter</p>
+    <div className={classes.filter_wrapper}>
+      <p className={classes.filter_wrapper_p}>
+        <img src="/icons/clarity_filter-line.svg" alt="filter icon" /> Фильтры
+      </p>
       <ToggleButtonGroup
         className={classes.filter}
         onChange={handleChangeCategory}
         exclusive
       >
-        <p>Категории</p>
+        <p className={classes.filter_p}>Категории</p>
         {categories && categories.length
           ? categories.map(({ id, attributes }) => {
               const { name, slug } = attributes;
@@ -66,36 +77,35 @@ export default function FilterCards({
             })
           : null}
       </ToggleButtonGroup>
-      {/* <ToggleButtonGroup
-                className={classes.filter}
-                onChange={handleToggleChange("types")}
-                value={filter.types}
-                exclusive
-            >
-                <p>Тип</p>
-                {types && types.length ?
-                    (
-                        types.map(({ id, attributes }) => {
-                            const { name } = attributes
-                            return (
-                                <ToggleButton
-                                    value={id}
-                                    aria-label='bold'
-                                    disableRipple={true}
-                                    className={classes.filter_btn}
-                                >
-                                    <RadioIcon
-                                        selected={filter.types.includes(id)}
-                                    />
+      {types && types.length ? (
+        <ToggleButtonGroup
+          className={classes.filter}
+          onChange={(e, v) => setSelectedType(v)}
+          value={selectedType}
+          exclusive
+        >
+          <p className={classes.filter_p}>Тип</p>
+          {types && types.length
+            ? types.map(({ id, attributes }) => {
+                const { name } = attributes;
+                return (
+                  <ToggleButton
+                    value={id}
+                    aria-label="bold"
+                    disableRipple={true}
+                    className={classes.filter_btn}
+                  >
+                    <RadioIcon selected={id === Number(selectedType)} />
+                    {name}
+                  </ToggleButton>
+                );
+              })
+            : null}
+        </ToggleButtonGroup>
+      ) : (
+        ""
+      )}
 
-                                    {name}
-                                </ToggleButton>
-                            )
-                        })
-                    )
-                    : null}
-
-            </ToggleButtonGroup> */}
       <ToggleButtonGroup
         value={selectedBrand}
         onChange={(e, v) => {
@@ -104,6 +114,7 @@ export default function FilterCards({
         aria-label="brand"
         className={classes.filter}
       >
+        <p className={classes.filter_p}>Бренд</p>
         {brands.map((brand) => (
           <ToggleButton
             value={brand.id}

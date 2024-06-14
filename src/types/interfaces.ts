@@ -110,3 +110,14 @@ export interface ProductsInterface {
   data: ProductInterface[];
   meta: MetaInterface;
 }
+
+export interface TypeInterface {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+  };
+}
