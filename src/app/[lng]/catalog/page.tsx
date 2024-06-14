@@ -26,10 +26,24 @@ import { getBrands } from "@/services/brand";
 
 async function Catalog({
   params: { lng },
-  searchParams: { page = 1, categorySlug, selectedBrands },
+  searchParams: {
+    page = 1,
+    categorySlug,
+    selectedBrands,
+    aksiya,
+    predzakaz,
+    all,
+  },
 }: {
   params: { lng: string };
-  searchParams: { page: number; categorySlug: string; selectedBrands: string };
+  searchParams: {
+    page: number;
+    categorySlug: string;
+    selectedBrands: string;
+    aksiya: string;
+    predzakaz: string;
+    all: string;
+  };
 }) {
   const categories = await getCategories({ lng });
   const category = await getCategory({ lng, slug: categorySlug });
@@ -41,6 +55,9 @@ async function Catalog({
     categorySlug,
     selectedBrands,
     lng,
+    aksiya,
+    predzakaz,
+    all,
   };
 
   const links = [

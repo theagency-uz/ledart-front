@@ -1,6 +1,7 @@
 .cards_wrapper {
   display: grid;
   grid-template-columns: 20% 80%;
+  position: relative;
 }
 
 .cards {
@@ -27,6 +28,12 @@
 }
 
 .filter_wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  position: sticky;
+  top: 100px;
+  height: fit-content;
 }
 .filter_wrapper_p {
   font-size: var(--font14);
@@ -35,9 +42,18 @@
   align-items: center;
   gap: 10px;
 }
-.filter {
-}
 .filter_p {
+  font-size: var(--font14);
+  font-weight: 400;
 }
 .filter_btn {
+  font-size: var(--font14);
+  display: flex;
+  gap: 10px;
+  font-family: "Magistral";
+  background-color: transparent !important;
+}
+
+.filter_btn:hover {
+  background-color: transparent;
 }

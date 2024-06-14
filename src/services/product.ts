@@ -1,24 +1,48 @@
+import { CategoryInterface } from "@/types/interfaces";
 import { strapi } from "./httpService";
 
-async function getProducts(
-  {
-    lng = "ru",
-    categoryId,
-    types,
-    brands,
-    limit = 9999,
-    page = 1,
-  }: {
-    lng: string,
-    categoryId: number,
-    types?: number,
-    brands?: number,
-    limit?: number,
-    page?: number,
-  }
-) {
+async function getProducts({
+  lng = "ru",
+  category,
+  brands,
+  type,
+  viewAll,
+  limit = 9999,
+  page = 1,
+}: {
+  lng: string;
+  viewAll?: string;
+  category?: CategoryInterface;
+  type?: string;
+  brands?: number[];
+  limit?: number;
+  page?: number;
+}) {
   try {
     let filters: any = {};
+    console.log({ viewAll, category, type, brands });
+
+    if (viewAll && viewAll === "aksiya") {
+      filters.oldPrice = {
+        $notNull: true,
+      };
+    } else if (viewAll && viewAll === "predzakaz") {
+      filters.predzakaz = {
+        $eq: true,
+      };
+    }
+
+    if (category) {
+      filters.category = { id: category.id };
+    }
+
+    if (type) {
+      filters.type = { id: { $in: type } };
+    }
+
+    if (brands && brands.length > 0) {
+      filters.brend = { id: { $in: brands } };
+    }
 
     const result = await strapi.get("/products", {
       params: {
@@ -40,7 +64,7 @@ async function getProducts(
   }
 }
 
-async function getProduct({ lng = "ru", slug }: { lng: string, slug: string }) {
+async function getProduct({ lng = "ru", slug }: { lng: string; slug: string }) {
   try {
     const result = await strapi.get("/products/slug/" + slug, {
       params: {

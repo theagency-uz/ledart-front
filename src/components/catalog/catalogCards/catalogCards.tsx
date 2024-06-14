@@ -11,13 +11,16 @@ import {
 import FilterCards from "./filter";
 import { getTypes } from "@/services/category";
 
-interface FilterCardsInterface {
+export interface FilterCardsInterface {
   categories: CategoryInterface[];
   category: CategoryInterface;
   brands: BrandInterface[];
-  categorySlug: string;
-  selectedBrands: string;
   lng: string;
+  categorySlug?: string;
+  selectedBrands?: string;
+  aksiya?: string;
+  predzakaz?: string;
+  all?: string;
 }
 
 export default function CatalogCards({
@@ -25,27 +28,44 @@ export default function CatalogCards({
 }: {
   props: FilterCardsInterface;
 }) {
-  const { categorySlug, lng, selectedBrands, category } = props;
+  const {
+    categorySlug,
+    lng,
+    selectedBrands,
+    category,
+    aksiya,
+    predzakaz,
+    all,
+  } = props;
   const [products, setProducts] = useState<ProductsInterface>();
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState("");
+  const [viewAll, setViewAll] = useState(
+    aksiya ? "aksiya" : predzakaz ? "predzakaz" : categorySlug ? "" : "all"
+  );
   const [selectedBrand, setSelectedBrand] = useState<number[]>(
     selectedBrands && selectedBrands.length ? JSON.parse(selectedBrands) : []
   );
 
   useEffect(() => {
     (async () => {
-      const products = await getProducts({ lng, categoryId: 3 });
+      const products = await getProducts({
+        lng,
+        category: category,
+        brands: selectedBrand,
+        type: selectedType,
+        viewAll: viewAll,
+      });
       const types = await getTypes({
         lng,
         categoryId: category ? category.id : 0,
       });
+      console.log(products);
 
       setTypes(types);
       setProducts(products);
     })();
-    console.log({ selectedType, category, selectedBrand });
-  }, [categorySlug, selectedBrand, selectedType]);
+  }, [categorySlug, selectedBrand, selectedType, viewAll]);
 
   return (
     <div className={classes.cards_wrapper}>
@@ -56,8 +76,10 @@ export default function CatalogCards({
         types={types}
         setSelectedType={setSelectedType}
         selectedType={selectedType}
+        setViewAll={setViewAll}
+        viewAll={viewAll}
       />
-      {products && products.data.length ? (
+      {products && products.data && products.data.length ? (
         <div className={classes.cards}>
           {products.data.map((card) => {
             return <CatalogCard card={card} />;
