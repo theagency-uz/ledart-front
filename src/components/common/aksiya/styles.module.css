@@ -1,0 +1,110 @@
+.aksiya_wrapper {
+  padding-block: 80px;
+  position: relative;
+}
+.my_swiper {
+  display: flex;
+}
+
+.aksiya_top {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 40px;
+}
+
+.aksiya_top h2 {
+  font-size: var(--font35);
+  font-weight: 400;
+}
+
+.image {
+  background-image: url("/icons/aksiya-back.svg");
+  background-size: cover;
+  border-radius: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 341/275;
+  position: relative;
+}
+
+.card_view {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.card_image {
+  width: 80%;
+  height: auto;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.text {
+  margin-top: 30px;
+  font-size: var(--font14);
+  color: #737373;
+}
+.btn {
+  width: 100%;
+  padding-block: 13px;
+}
+.old_price {
+  margin-block: 9px 0;
+  font-weight: 400;
+  color: #8a8a8a;
+  text-decoration: line-through;
+  font-size: var(--font12);
+}
+.price {
+  margin-block: 0 31px;
+  font-weight: 400;
+  font-size: var(--font16);
+}
+
+.view_all {
+  padding-top: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 400;
+}
+
+.aksiya_btns {
+  display: flex;
+}
+
+.next_btn {
+  transform: rotate(180deg);
+}
+
+.next_btn,
+.prev_btn {
+  cursor: pointer;
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: #f4f4f4;
+  z-index: 4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next_btn img,
+.prev_btn img {
+  width: 35%;
+  height: 35%;
+}
+
+@media (max-width: 1439px) {
+  .next_btn,
+  .prev_btn {
+    width: 30px;
+    height: 30px;
+  }
+}
