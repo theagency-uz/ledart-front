@@ -13,11 +13,6 @@
   margin-bottom: 40px;
 }
 
-.aksiya_top h2 {
-  font-size: var(--font35);
-  font-weight: 400;
-}
-
 .image {
   background-image: url("/icons/aksiya-back.svg");
   background-size: cover;

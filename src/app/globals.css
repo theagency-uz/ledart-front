@@ -77,6 +77,15 @@ button {
   margin-top: 124px;
 }
 
+h2 {
+  font-size: var(--font35);
+  font-weight: 400;
+}
+h6 {
+  font-size: var(--font16);
+  font-weight: 400;
+}
+
 @media (max-width: 1200px) {
   :root {
     --font12: 12px;

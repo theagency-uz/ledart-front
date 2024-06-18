@@ -20,10 +20,6 @@
   gap: 20px;
 }
 
-.form h2 {
-  font-size: var(--font35);
-  font-weight: 400;
-}
 .form p {
   font-size: var(--font14);
   color: #777777;
