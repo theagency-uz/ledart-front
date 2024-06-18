@@ -1,26 +1,19 @@
-import { strapi } from './httpService';
+import { strapi } from "./httpService";
 
-async function getFaq({ lng = "ru", limit = 10, page = 1 } = { lng: "ru", limit: 10, page: 1 }) {
+async function getFaq({ lng = "ru" }: { lng: string }) {
   try {
     const result = await strapi.get("/faqs", {
       params: {
         locale: lng,
         pagination: {
-          page: page,
-          pageSize: limit
-        }
+          page: 1,
+          pageSize: 9999,
+        },
         // sort: ['createdAt:desc'],
-      }
+      },
     });
     return result.data.data;
-
-  } catch (err) {
-    console.log("err: ", err.response);
-  }
+  } catch (err) {}
 }
 
-
-export {
-  getFaq
-};
-
+export { getFaq };

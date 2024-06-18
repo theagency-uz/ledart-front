@@ -1,0 +1,49 @@
+.faq_wrapper {
+  margin-block: 125px 100px;
+}
+
+.faq_wrapper h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.faq_btn {
+  width: 2.5vw;
+  height: 2.5vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.faq_btn img {
+  width: 30%;
+}
+
+.faq_btn:hover {
+  background-color: #441db5;
+}
+
+.faq_wrapper :global(::before) {
+  display: none;
+}
+.faq_wrapper :global(.MuiAccordion-rounded) {
+  padding: 10px 20px;
+  border-radius: 40px;
+  background-color: #f7f7f7;
+  box-shadow: none;
+}
+.faq {
+  margin-top: 10px;
+}
+.faq h5 {
+  max-width: 50%;
+}
+.faq p {
+  max-width: 70%;
+}
+
+@media (max-width: 1439px) {
+  .faq_btn {
+    width: 30px;
+    height: 30px;
+  }
+}

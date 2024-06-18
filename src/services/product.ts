@@ -20,7 +20,6 @@ async function getProducts({
 }) {
   try {
     let filters: any = {};
-    console.log({ viewAll, category, type, brands });
 
     if (viewAll && viewAll === "aksiya") {
       filters.oldPrice = {

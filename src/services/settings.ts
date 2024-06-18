@@ -1,21 +1,17 @@
-import { strapi } from './httpService';
+import { strapi } from "./httpService";
 
-async function getSettings({ lng = "ru" } = { lng: "ru" }) {
+async function getSettings({ lng = "ru" }: { lng: string }) {
   try {
     const result = await strapi.get("/setting", {
       params: {
         locale: lng,
-        populate: ['logo', 'placeholder', 'logo_footer']
-      }
+        populate: ["logo", "placeholder", "logo_footer"],
+      },
     });
     return result.data.data;
-
   } catch (err) {
-    console.log("err: ", err.response);
     return { error: true, msg: err };
   }
 }
 
-export {
-  getSettings
-};
+export { getSettings };

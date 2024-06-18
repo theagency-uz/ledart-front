@@ -121,3 +121,37 @@ export interface TypeInterface {
     locale: string;
   };
 }
+
+export interface FaqInterface {
+  id: number;
+  attributes: {
+    question: string;
+    answer: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+  };
+}
+
+export interface SettingsInterface {
+  id: number;
+  attributes: {
+    phone: string;
+    address: string;
+    email: string;
+    telegram?: string | null;
+    instagram?: string | null;
+    facebook?: string | null;
+    youtube?: string | null;
+    address_link: string;
+    working_time?: string | null;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+    logo: ImageInterface;
+    placeholder: ImageInterface;
+    logo_footer: ImageInterface;
+  };
+}
