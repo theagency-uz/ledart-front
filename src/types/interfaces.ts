@@ -14,39 +14,37 @@ export interface CategoryInterface {
 }
 
 export interface ImageInterface {
-  data: {
-    id: number;
-    attributes: {
-      name: string;
-      alternativeText: string | null;
-      caption: string | null;
-      width: number;
-      height: number;
-      formats: {
-        thumbnail: {
-          ext: string;
-          url: string;
-          hash: string;
-          mime: string;
-          name: string;
-          path: string | null;
-          size: number;
-          width: number;
-          height: number;
-          sizeInBytes: number;
-        };
+  id: number;
+  attributes: {
+    name: string;
+    alternativeText: string | null;
+    caption: string | null;
+    width: number;
+    height: number;
+    formats: {
+      thumbnail: {
+        ext: string;
+        url: string;
+        hash: string;
+        mime: string;
+        name: string;
+        path: string | null;
+        size: number;
+        width: number;
+        height: number;
+        sizeInBytes: number;
       };
-      hash: string;
-      ext: string;
-      mime: string;
-      size: number;
-      url: string;
-      previewUrl: string | null;
-      provider: string;
-      provider_metadata: string | null;
-      createdAt: string;
-      updatedAt: string;
     };
+    hash: string;
+    ext: string;
+    mime: string;
+    size: number;
+    url: string;
+    previewUrl: string | null;
+    provider: string;
+    provider_metadata: string | null;
+    createdAt: string;
+    updatedAt: string;
   };
 }
 
@@ -58,7 +56,7 @@ export interface BrandInterface {
     updatedAt: string;
     publishedAt: string;
     locale: string;
-    image: ImageInterface;
+    image: { data: ImageInterface };
   };
 }
 
@@ -84,17 +82,7 @@ export interface ProductInterface {
   attributes: {
     name: string;
     slug: string;
-    description: [
-      {
-        type: string;
-        children: [
-          {
-            text: string;
-            type: string;
-          }
-        ];
-      }
-    ];
+    description: string;
     createdAt: string;
     updatedAt: string;
     publishedAt: string;
@@ -102,7 +90,17 @@ export interface ProductInterface {
     price: string;
     oldPrice: string;
     predzakaz: boolean;
-    previewImage: ImageInterface;
+    previewImage: { data: ImageInterface };
+    resolutions: {
+      data: ResolutionsInterface[];
+    };
+    tech_characteristics: [
+      {
+        id: number;
+        name: string;
+        value: string;
+      }
+    ];
   };
 }
 
@@ -150,8 +148,19 @@ export interface SettingsInterface {
     updatedAt: string;
     publishedAt: string;
     locale: string;
-    logo: ImageInterface;
-    placeholder: ImageInterface;
-    logo_footer: ImageInterface;
+    logo: { data: ImageInterface };
+    placeholder: { data: ImageInterface };
+    logo_footer: { data: ImageInterface };
+  };
+}
+
+export interface ResolutionsInterface {
+  id: number;
+  attributes: {
+    value: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
   };
 }

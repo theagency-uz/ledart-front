@@ -82,7 +82,7 @@ export default function CatalogCards({
       {products && products.data && products.data.length ? (
         <div className={classes.cards}>
           {products.data.map((card) => {
-            return <CatalogCard card={card} />;
+            return <CatalogCard card={card} lng={lng} />;
           })}
         </div>
       ) : (

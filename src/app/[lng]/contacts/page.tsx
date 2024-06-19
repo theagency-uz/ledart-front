@@ -1,11 +1,14 @@
-import React from "react";
-import classes from "./styles.module.css";
-import MapYandex from "@/components/contacts/mapYandex/MapYandex";
-import contacts from "@/data/contacts.json";
+"use client";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import MapYandex from "@/components/contacts/mapYandex/MapYandex";
 import Container from "@/components/common/container/container";
 import BreadCrumbs from "@/components/common/breadCrumbs/breadCrumbs";
 import FormWrapper from "@/components/common/formWrapper/formWrapper";
+import { SettingsInterface } from "@/types/interfaces";
+import { getSettings } from "@/services/settings";
+
+import classes from "./styles.module.css";
 
 interface ContactsProps {
   params: {
@@ -13,13 +16,16 @@ interface ContactsProps {
   };
 }
 
-export const metadata = {
-  title: "Контакты",
-  // description: "",
-  keywords: [],
-};
+export default function Contacts({ params: { lng } }: ContactsProps) {
+  const [contacts, setContacts] = useState<SettingsInterface>();
 
-export default async function Contacts({ params: { lng } }: ContactsProps) {
+  useEffect(() => {
+    (async () => {
+      const contacts = await getSettings({ lng });
+      setContacts(contacts);
+    })();
+  }, []);
+
   const links = [
     {
       name: "Контакты",
@@ -38,12 +44,15 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
         <div className={classes.contacts_right}>
           <div className={classes.right_info}>
             <div className={classes.label}>Адрес</div>
-            <div className={classes.text}>{contacts.address}</div>
+            <div className={classes.text}>{contacts?.attributes.address}</div>
           </div>
           <div className={classes.right_info}>
             <div className={classes.label}>Телефон:</div>
-            <a href={"tel:" + contacts.phone} className={classes.text}>
-              {contacts.phone}
+            <a
+              href={"tel:" + contacts?.attributes.phone}
+              className={classes.text}
+            >
+              {contacts?.attributes.phone}
             </a>
           </div>
           <div
@@ -55,7 +64,10 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
               marginTop: "10px",
             }}
           >
-            <Link href={contacts.telegram} className={classes.text}>
+            <Link
+              href={contacts?.attributes.telegram || ""}
+              className={classes.text}
+            >
               <img
                 src={"/icons/contact_tg.svg"}
                 alt="telegram"
@@ -63,7 +75,10 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
                 width={25}
               />
             </Link>
-            <Link href={contacts.instagram} className={classes.text}>
+            <Link
+              href={contacts?.attributes.instagram || ""}
+              className={classes.text}
+            >
               <img
                 src={"/icons/contact_insta.svg"}
                 alt="telegram"
@@ -74,15 +89,21 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
           </div>
           <div className={`${classes.right_info} ${classes.div4}`}>
             <div className={`${classes.label} notranslate`}>Email</div>
-            <a href={"mailto:" + contacts.mail} className={classes.text}>
-              {contacts.mail}
+            <a
+              href={"mailto:" + contacts?.attributes.email}
+              className={classes.text}
+            >
+              {contacts?.attributes.email}
             </a>
           </div>
           <div
             className={`${classes.right_info} ${classes.display_block}`}
             style={{ display: "flex", gap: "35px", flexDirection: "row" }}
           >
-            <Link href={contacts.telegram} className={classes.text}>
+            <Link
+              href={contacts?.attributes.telegram || ""}
+              className={classes.text}
+            >
               <img
                 src={"/icons/contact_tg.svg"}
                 alt="telegram"
@@ -90,7 +111,10 @@ export default async function Contacts({ params: { lng } }: ContactsProps) {
                 width={25}
               />
             </Link>
-            <Link href={contacts.instagram} className={classes.text}>
+            <Link
+              href={contacts?.attributes.instagram || ""}
+              className={classes.text}
+            >
               <img
                 src={"/icons/contact_insta.svg"}
                 alt="telegram"

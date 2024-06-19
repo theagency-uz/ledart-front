@@ -1,0 +1,130 @@
+.mySwiper {
+  width: 100%;
+  position: relative;
+}
+.mySwiper :global(.swiper-pagination-bullet-active) {
+  background-color: #131313;
+}
+.mySwiper :global(.swiper-slide) {
+  cursor: grab;
+}
+.mySwiper :global(.swiper-pagination) {
+  margin-bottom: 20px;
+}
+
+.top_image {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 515/448;
+
+  object-fit: cover;
+  border-radius: 30px;
+}
+
+.aksiya_btns {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.next_btn {
+  transform: rotate(180deg);
+}
+
+.next_btn,
+.prev_btn {
+  cursor: pointer;
+  width: 2.5vw;
+  height: 2.5vw;
+  background-color: #f4f4f4;
+  z-index: 4;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.next_btn img,
+.prev_btn img {
+  width: 35%;
+  height: 35%;
+}
+
+.product_info {
+  padding: 40px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.product_info_h {
+}
+.product_info_select {
+  width: fit-content;
+}
+.product_info_select :global(.MuiInputBase-root::before) {
+  display: none;
+}
+.product_info_select :global(.MuiInputBase-root::after) {
+  display: none;
+}
+.product_info_select :global(.MuiInputBase-root) {
+  border: 1px solid #d1d1d1;
+  border-radius: 30px;
+  padding: 3px 20px;
+}
+.product_info_select :global(.MuiSelect-select) {
+  padding-right: 10px !important;
+}
+.product_info_characteristics {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.product_info_characteristics span:nth-child(1) {
+  color: #a0a0a0;
+}
+.product_info_characteristics p {
+  font-size: var(--font14);
+}
+.product_info_bottom {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  /* margin-top: auto; */
+}
+.product_info_bottom_btn {
+  padding: 10px 30px;
+}
+
+@media (max-width: 1439px) {
+  .next_btn,
+  .prev_btn {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+@media (max-width: 1199px) {
+  .body {
+    gap: 20px;
+  }
+}
+@media (max-width: 767px) {
+  .body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .see_all {
+    margin-top: 15px;
+  }
+}
+
+@media (max-width: 430px) {
+  .body {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

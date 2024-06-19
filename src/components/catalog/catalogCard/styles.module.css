@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .image {
   background-color: #f7f7f7;
@@ -22,13 +25,21 @@
   margin-top: 30px;
   font-size: var(--font14);
   color: #737373;
+  margin-bottom: 10px;
 }
 .btn {
   width: 100%;
   padding-block: 13px;
 }
+
+.old_price {
+  font-size: var(--font12);
+  color: #8a8a8a;
+  text-decoration: line-through;
+  margin-block: 9px 0;
+}
 .price {
-  margin-block: 9px 31px;
+  margin-block: 0 31px;
   font-weight: 400;
   font-size: var(--font16);
 }

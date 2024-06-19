@@ -1,7 +1,7 @@
 .lang_switch :global(input) {
 }
 .lang_switch :global(.MuiSelect-select) {
-  font-size: var(--font16);
+  font-size: var(--font12);
   font-weight: 500;
   color: #fff;
   font-family: "Magistral";
@@ -13,7 +13,7 @@
 .lang_switch :global(li) {
   font-family: "Magistral" !important;
   color: #fff;
-  font-size: var(--font16);
+  font-size: var(--font12);
 }
 
 .lang_switch :global(.MuiSvgIcon-root) {

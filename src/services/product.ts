@@ -68,7 +68,21 @@ async function getProduct({ lng = "ru", slug }: { lng: string; slug: string }) {
     const result = await strapi.get("/products/slug/" + slug, {
       params: {
         locale: lng,
-        populate: ["image"],
+        populate: {
+          previewImage: true,
+          images: true,
+          category: true,
+          brand: true,
+          type_variations: true,
+          characteristics: true,
+          tech_characteristics: true,
+          resolutions: true,
+          instructions: {
+            populate: {
+              file: true,
+            },
+          },
+        },
         // sort: ['createdAt:desc'],
       },
     });

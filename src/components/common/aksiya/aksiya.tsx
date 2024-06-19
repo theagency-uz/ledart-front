@@ -67,6 +67,7 @@ export default function Aksiya({ lng }: { lng: string }) {
         </div>
       </div>
       <Swiper
+        loop
         ref={swiper}
         slidesPerView={3}
         spaceBetween={10}
@@ -108,7 +109,12 @@ export default function Aksiya({ lng }: { lng: string }) {
                   <p className={classes.text}>{name}</p>
                   <p className={classes.old_price}>{oldPrice}</p>
                   <p className={classes.price}>{price}</p>
-                  <Button className={classes.btn}>Заказать</Button>
+                  <Button
+                    className={classes.btn}
+                    href={`/${lng}/product/${slug}`}
+                  >
+                    Заказать
+                  </Button>
                 </SwiperSlide>
               );
             })

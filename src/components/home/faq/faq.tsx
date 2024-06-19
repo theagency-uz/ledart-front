@@ -10,7 +10,7 @@ import Button from "@/components/common/button/button";
 
 export default function Faq({ lng }: { lng: string }) {
   const [faq, setFaq] = useState<FaqInterface[]>([]);
-  const [expanded, setExpanded] = useState<string | false>(false);
+  const [expanded, setExpanded] = useState<string | false>("panel0");
 
   const handleChange =
     (panel: string) => (event: SyntheticEvent, isExpanded: boolean) => {

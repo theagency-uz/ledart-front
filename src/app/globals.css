@@ -81,6 +81,14 @@ h2 {
   font-size: var(--font35);
   font-weight: 400;
 }
+h3 {
+  font-size: var(--font30);
+  font-weight: 400;
+}
+h4 {
+  font-size: var(--font25);
+  font-weight: 400;
+}
 h5 {
   font-size: var(--font18);
   font-weight: 400;

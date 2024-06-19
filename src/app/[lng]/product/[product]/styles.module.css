@@ -1,0 +1,17 @@
+.product_view {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(2);
+  grid-column-gap: 0px;
+  grid-row-gap: 0px;
+}
+
+.product_view_left {
+  grid-area: 1 / 1 / 2 / 2;
+}
+.product_view_right {
+  grid-area: 1 / 2 / 2 / 3;
+}
+.product_view_bottom {
+  grid-area: 2 / 1 / 3 / 3;
+}
