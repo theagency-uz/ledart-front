@@ -5,25 +5,6 @@ import CatalogCards from "@/components/catalog/catalogCards/catalogCards";
 import { getCategories, getCategory, getTypes } from "@/services/category";
 import { getBrands } from "@/services/brand";
 
-// export async function generateMetadata({
-//   params: { lng },
-//   searchParams: { page = 1, categorySlug },
-// }:{
-//   params: { lng: string };
-//   searchParams: { page: number; categorySlug: string};
-// }) {
-//   const category = await getCategory({ lng, slug: categorySlug });
-
-//   return {
-//     metadataBase: new URL(strapiImageUrl),
-//     title: category?.attributes.name,
-//     description: category?.attributes.description,
-//     openGraph: {
-//       images: [category?.attributes.image.data.attributes.url],
-//     },
-//   };
-// }
-
 async function Catalog({
   params: { lng },
   searchParams: {

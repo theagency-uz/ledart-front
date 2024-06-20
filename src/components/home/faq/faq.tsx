@@ -21,7 +21,6 @@ export default function Faq({ lng }: { lng: string }) {
     (async () => {
       const data = await getFaq({ lng });
       setFaq(data);
-      console.log(data);
     })();
   }, []);
 

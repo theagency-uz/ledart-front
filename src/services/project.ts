@@ -1,4 +1,4 @@
-import { strapi } from './httpService';
+import { strapi } from "./httpService";
 
 async function getProjects({ lng = "ru" } = { lng: "ru" }) {
   try {
@@ -8,19 +8,15 @@ async function getProjects({ lng = "ru" } = { lng: "ru" }) {
         populate: {
           image: true,
           projects: {
-            populate: ['image']
-          }
+            populate: ["image"],
+          },
         },
-      }
+      },
     });
     return result.data.data;
-
   } catch (err) {
-    console.log("err: ", err.response);
     return { error: true, msg: err };
   }
 }
 
-export {
-  getProjects
-};
+export { getProjects };

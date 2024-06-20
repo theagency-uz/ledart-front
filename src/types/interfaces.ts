@@ -9,7 +9,7 @@ export interface CategoryInterface {
     updatedAt: string;
     publishedAt: string;
     locale: string;
-    image: ImageInterface;
+    image: { data: ImageInterface };
   };
 }
 
