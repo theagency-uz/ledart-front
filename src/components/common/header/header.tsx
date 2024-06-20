@@ -56,14 +56,14 @@ export default function Header({ lng }: PropsInterface) {
         </Link>
       </div>
       <div className={classes.social_media}>
-        <a href={"tel:" + contacts?.attributes.phone}>
-          {contacts?.attributes.phone}
+        <a href={"tel:" + contacts?.attributes?.phone}>
+          {contacts?.attributes?.phone}
         </a>
         <div className={classes.icons}>
-          <a href={contacts?.attributes.telegram || ""}>
+          <a href={contacts?.attributes?.telegram || ""}>
             <img src="/icons/header_telegram.svg" alt="header icon" />
           </a>
-          <a href={contacts?.attributes.instagram || ""}>
+          <a href={contacts?.attributes?.instagram || ""}>
             <img src="/icons/header_insta.svg" alt="header icon" />
           </a>
         </div>

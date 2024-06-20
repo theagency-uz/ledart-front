@@ -1,17 +1,15 @@
 "use client";
 import Container from "@/components/common/container/container";
-import { useState } from "react";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-
-import classes from "./styles.module.css";
 import { postApplication } from "@/services/application";
 import PhoneNumber from "@/components/common/formWrapper/phoneNumber";
+import { toast } from "react-toastify";
+
+import classes from "./styles.module.css";
+import { CircularProgress } from "@mui/material";
 
 export default function CalculatePrice({ lng }: { lng: string }) {
-  const [form, setForm] = useState<{ open: boolean }>();
-  const [loading, setLoading] = useState(false);
-
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -23,8 +21,6 @@ export default function CalculatePrice({ lng }: { lng: string }) {
     }),
     onSubmit: async ({ name, phone }) => {
       try {
-        setLoading(true);
-
         const result = await postApplication({
           name,
           phone,
@@ -32,15 +28,15 @@ export default function CalculatePrice({ lng }: { lng: string }) {
           url: window.location.href,
         });
 
-        setLoading(false);
+        toast.success("Успешно отправлен!");
 
-        setForm({ open: false });
         formik.resetForm();
       } catch (err) {
-        setLoading(false);
+        toast.error("Error");
       }
     },
   });
+
   return (
     <Container>
       <div className={classes.calculate_price}>
@@ -52,18 +48,24 @@ export default function CalculatePrice({ lng }: { lng: string }) {
             время.
           </p>
         </div>
-        <form className={classes.calculate_price_right}>
+        <form
+          className={classes.calculate_price_right}
+          onSubmit={formik.handleSubmit}
+        >
           <div className={classes.form_input}>
-            <input type="text" placeholder="Имя" />
-          </div>
-          <div className={classes.form_input}>
-            <PhoneNumber
-              value={formik.values.phone}
-              formik={formik}
-              name="phone"
-              helperText={formik.touched.phone && formik.errors.phone}
+            <input
+              placeholder={"Ваше имя"}
+              type="text"
+              name="name"
+              value={formik.values.name}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
             />
           </div>
+          <div className={classes.form_input}>
+            <PhoneNumber formik={formik} />
+          </div>
+          <button type="submit"></button>
         </form>
       </div>
     </Container>

@@ -27,6 +27,8 @@
     "react-dom": "^18",
     "react-i18next": "^14.1.2",
     "react-phone-input-2": "^2.15.1",
+    "react-phone-number-input": "^3.4.3",
+    "react-toastify": "^10.0.5",
     "swiper": "^11.1.4",
     "yup": "^1.4.0"
   },

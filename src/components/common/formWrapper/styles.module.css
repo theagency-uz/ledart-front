@@ -33,6 +33,7 @@
   font-size: var(--font14);
   border: 1px solid #bebebe;
   border-radius: 50px;
+  position: relative;
 }
 
 .form_input input {
@@ -40,6 +41,12 @@
   width: 100%;
   outline: none;
 }
+
+.form_input input:-webkit-autofill,
+.form_input input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
 .form_input :global(.form-control) {
   border: none !important;
   height: fit-content !important;
@@ -51,6 +58,14 @@
 }
 .btn {
   padding: 18px 44px;
+}
+
+.error {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-10%, -50%);
+  color: #ff0000;
 }
 
 @media (max-width: 1199px) {

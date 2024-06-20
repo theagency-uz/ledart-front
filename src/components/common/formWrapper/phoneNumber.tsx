@@ -1,34 +1,28 @@
 import classes from "./styles.module.css";
-import PhoneInput from "react-phone-input-2";
-import "react-phone-input-2/lib/style.css";
+import "react-phone-number-input/style.css";
+import PhoneInput from "react-phone-number-input";
 
 export default function PhoneNumber({
-  value,
   formik,
-  name,
-  helperText
+  helperText,
 }: {
-  value: string,
-  formik: any,
-  name: string,
-  helperText: any
+  formik: any;
+  helperText?: any;
 }) {
-
   return (
     <>
       <label className={classes.number}>
-        {/* <p className={classes.label}>{label}</p> */}
         <PhoneInput
-          country={"uz"}
-          value={value}
-          onChange={(v, country, e, formattedValue) =>
-            formik.setFieldValue(name, v)
-          }
-          placeholder='+9989 (99) 999-99-99'
+          defaultCountry="UZ"
+          value={formik.values.phone}
+          onChange={(v) => formik.setFieldValue("phone", v)}
+          placeholder="+9989 (99) 999-99-99"
           inputProps={{
             required: true,
-            name: name,
+            name: "phone",
           }}
+          onBlur={formik.handleBlur}
+          onKeyDown={() => console.log("key down")}
         />
       </label>
       {helperText && <p className={classes.helperText}>{helperText}</p>}

@@ -1,4 +1,4 @@
-"use client"
+"use client";
 import Button from "../button/button";
 import PhoneNumber from "./phoneNumber";
 import { useState } from "react";
@@ -8,64 +8,79 @@ import * as Yup from "yup";
 import classes from "./styles.module.css";
 import { postApplication } from "@/services/application";
 import { CircularProgress } from "@mui/material";
+import { toast } from "react-toastify";
 
 export default function Form({ lng }: { lng: string }) {
-    const [form, setForm] = useState<{ open: boolean }>()
-    const [loading, setLoading] = useState(false)
+  const [loading, setLoading] = useState(false);
 
-    const formik = useFormik({
-        initialValues: {
-            name: "",
-            phone: "",
+  const formik = useFormik({
+    initialValues: {
+      name: "",
+      phone: "",
+    },
+    validationSchema: Yup.object({
+      name: Yup.string().max(255).required("Имя обязательное поле"),
+      phone: Yup.string().required("Номер обязательное поле"),
+    }),
+    onSubmit: async ({ name, phone }) => {
+      try {
+        setLoading(true);
 
-        },
-        validationSchema: Yup.object({
-            name: Yup.string().max(255).required("Имя обязательное поле"),
-            phone: Yup.string().required("Номер обязательное поле"),
+        const result = await postApplication({
+          name,
+          phone,
+          lng: lng,
+          url: window.location.href,
+        });
 
-        }),
-        onSubmit: async ({ name, phone }) => {
-            try {
-                setLoading(true);
+        setLoading(false);
+        toast.success("Успешно отправлен!");
 
-                const result = await postApplication({
-                    name,
-                    phone,
-                    lng: lng,
-                    url: window.location.href,
-                });
+        formik.resetForm();
+      } catch (err) {
+        setLoading(false);
+      }
+    },
+  });
+  return (
+    <form onSubmit={formik.handleSubmit} className={classes.form}>
+      <h2>Остались вопросы?</h2>
+      <p>
+        {
+          "Оставьте ваши контактные данные и мы свяжемся \n с вами в ближайшее время"
+        }
+      </p>
+      <div className={classes.form_input}>
+        <input
+          placeholder={"Ваше имя"}
+          type="text"
+          name="name"
+          value={formik.values.name}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+        />
+        {formik.touched.name && (
+          <span className={classes.error}>{formik.errors.name}</span>
+        )}
+      </div>
 
-                setLoading(false);
+      <div className={classes.form_input}>
+        <PhoneNumber formik={formik} />
 
-                setForm({ open: false });
-                formik.resetForm();
-            } catch (err) {
-                setLoading(false);
-            }
-        },
-    });
-    return (
-        <form onSubmit={formik.handleSubmit} className={classes.form}>
-            <h2>Остались вопросы?</h2>
-            <p>
-                {
-                    "Оставьте ваши контактные данные и мы свяжемся \n с вами в ближайшее время"
-                }
-            </p>
-            <div className={classes.form_input}>
-                <input type="text" placeholder="Имя" />
-            </div>
-            <div className={classes.form_input}>
-                <PhoneNumber
-                    value={formik.values.phone}
-                    formik={formik}
-                    name="phone"
-                    helperText={formik.touched.phone && formik.errors.phone}
-                />
-            </div>
-            <Button className={classes.btn} type="submit">
-                Получить консультацию {loading && <CircularProgress size={20} sx={{ color: "#fff" }} />}
-            </Button>
-        </form>
-    );
+        {formik.touched.phone && (
+          <span className={classes.error}>{formik.errors.phone}</span>
+        )}
+      </div>
+      <div className={classes.validation_error}></div>
+      <Button className={classes.btn} type="submit">
+        Получить консультацию{" "}
+        {loading && (
+          <CircularProgress
+            size={15}
+            sx={{ color: "#441db5", marginLeft: "10px" }}
+          />
+        )}
+      </Button>
+    </form>
+  );
 }

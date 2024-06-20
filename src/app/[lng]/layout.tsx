@@ -3,6 +3,8 @@ import { dir } from "i18next";
 import Script from "next/script";
 import AllScripts from "@/components/allScripts";
 import { languages } from "../i18n/settings";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import "../globals.css";
 import Header from "@/components/common/header/header";
@@ -53,6 +55,7 @@ export default function RootLayout({
           showSpinner={false}
           shadow="0 0 10px #fff,0 0 5px #fff"
         />
+        <ToastContainer theme="colored" />
         <Header lng={lng} />
         <div className="layout">{children}</div>
 

@@ -35,10 +35,10 @@ export default function Footer({ lng }: PropsInterface) {
           </Link>
           <p>{"Официальный представитель\n Ledtao, Absen, Novastar, Huidu"}</p>
           <div className={classes.icons}>
-            <a href={contacts?.attributes.telegram || ""}>
+            <a href={contacts?.attributes?.telegram || ""}>
               <img src="/icons/header_telegram.svg" alt="header icon" />
             </a>
-            <a href={contacts?.attributes.instagram || ""}>
+            <a href={contacts?.attributes?.instagram || ""}>
               <img src="/icons/header_insta.svg" alt="header icon" />
             </a>
           </div>
@@ -71,18 +71,18 @@ export default function Footer({ lng }: PropsInterface) {
       </div>
       <div className={classes.right}>
         <div className={classes.right_inner}>
-          <a href={contacts?.attributes.address_link}>
-            {contacts?.attributes.address}
+          <a href={contacts?.attributes?.address_link}>
+            {contacts?.attributes?.address}
           </a>
-          <p>{contacts?.attributes.working_time}</p>
+          <p>{contacts?.attributes?.working_time}</p>
           <h6>
-            <a href={"mailto:" + contacts?.attributes.email}>
-              {contacts?.attributes.email}
+            <a href={"mailto:" + contacts?.attributes?.email}>
+              {contacts?.attributes?.email}
             </a>
           </h6>
           <h6>
-            <a href={"tel:" + contacts?.attributes.phone}>
-              {contacts?.attributes.phone}
+            <a href={"tel:" + contacts?.attributes?.phone}>
+              {contacts?.attributes?.phone}
             </a>
           </h6>
         </div>
