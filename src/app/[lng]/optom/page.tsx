@@ -4,6 +4,7 @@ import Partners from "@/components/optom/pertners/partners";
 import SixReasons from "@/components/optom/sixReasons/sixReasons";
 import Karusel from "@/components/common/karusel/karusel";
 import Professionals from "@/components/optom/professionals/professionals";
+import Hero from "@/components/optom/hero/hero";
 
 export default function Optom({
   params: { lng },
@@ -12,6 +13,7 @@ export default function Optom({
 }) {
   return (
     <>
+      <Hero lng={lng} />
       <Karusel />
       <SixReasons lng={lng} />
       <Partners lng={lng} />

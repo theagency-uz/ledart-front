@@ -1,7 +1,6 @@
 .card {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
 }
 .image {
   background-color: #f7f7f7;
