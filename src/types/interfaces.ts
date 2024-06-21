@@ -164,3 +164,24 @@ export interface ResolutionsInterface {
     locale: string;
   };
 }
+
+export interface PortfolioProjectInterface {
+  id: number;
+  attributes: {
+    name: string;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    locale: string;
+    characteristics: [
+      {
+        id: number;
+        name: string;
+        value: string;
+      }
+    ];
+    image: {
+      data: ImageInterface;
+    };
+  };
+}

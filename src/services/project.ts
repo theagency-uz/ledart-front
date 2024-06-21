@@ -2,15 +2,10 @@ import { strapi } from "./httpService";
 
 async function getProjects({ lng = "ru" } = { lng: "ru" }) {
   try {
-    const result = await strapi.get("/project", {
+    const result = await strapi.get("/portfolio-projects", {
       params: {
         locale: lng,
-        populate: {
-          image: true,
-          projects: {
-            populate: ["image"],
-          },
-        },
+        populate: ["image", "characteristics"],
       },
     });
     return result.data.data;
