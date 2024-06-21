@@ -19,7 +19,7 @@ export default async function Home({ params: { lng } }: PropsInterface) {
     <main className={classes.home}>
       <Hero lng={lng} />
       <Catalog lng={lng} />
-      <Partners lng={lng} />
+      <Partners lng={lng} home />
       <Aksiya lng={lng} />
       <CalculatePrice lng={lng} />
       <AboutCards lng={lng} />

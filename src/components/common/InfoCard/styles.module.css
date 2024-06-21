@@ -18,10 +18,11 @@
   right: 0;
 }
 .icon img {
-  width: 50%;
+  width: 50% !important;
 }
 .card h6 {
   max-width: 90%;
+  white-space: pre;
 }
 .card p {
   max-width: 90%;

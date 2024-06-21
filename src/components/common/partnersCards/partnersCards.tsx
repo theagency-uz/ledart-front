@@ -1,3 +1,4 @@
+"use client";
 import { useEffect, useState } from "react";
 import RoundButton from "../roundButton/button";
 import classes from "./styles.module.css";

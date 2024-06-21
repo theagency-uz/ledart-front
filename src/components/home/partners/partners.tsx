@@ -6,10 +6,16 @@ import { useEffect, useState } from "react";
 import { BrandInterface } from "@/types/interfaces";
 import { getBrands } from "@/services/brand";
 
-export default function Partners({ lng }: { lng: string }) {
+export default function Partners({
+  lng,
+  home,
+}: {
+  lng: string;
+  home?: boolean;
+}) {
   return (
     <Container className={classes.partners}>
-      <h3>{"Сотрудничаем с мировыми\n производителями:"}</h3>
+      {home ? <h3>{"Сотрудничаем с мировыми\n производителями:"}</h3> : null}
       <PartnersCards lng={lng} />
     </Container>
   );

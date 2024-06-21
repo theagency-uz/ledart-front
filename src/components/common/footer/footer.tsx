@@ -54,7 +54,7 @@ export default function Footer({ lng }: PropsInterface) {
             ? category.map(({ id, attributes }, index) => {
                 const { name, slug } = attributes;
                 return (
-                  <Link href={`/${lng}/catalog?categorySlug=${slug}`}>
+                  <Link key={id} href={`/${lng}/catalog?categorySlug=${slug}`}>
                     {name}
                   </Link>
                 );
@@ -63,7 +63,7 @@ export default function Footer({ lng }: PropsInterface) {
         </p>
 
         <h6>
-          <Link href={`/${lng}/about`}>О нас</Link>
+          <Link href={`/${lng}/optom`}>Оптом</Link>
         </h6>
         <h6>
           <Link href={`/${lng}/contacts`}>Контакты</Link>
