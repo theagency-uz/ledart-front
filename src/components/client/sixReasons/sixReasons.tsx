@@ -15,7 +15,6 @@ export default function SixReasons({ lng }: { lng: string }) {
               title={title}
               description={description}
               icon={icon}
-              lng={lng}
               key={index}
             />
           );

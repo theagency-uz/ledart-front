@@ -18,7 +18,7 @@
   aspect-ratio: 515/448;
 
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: var(--b-r-30);
 }
 
 .aksiya_btns {
@@ -73,7 +73,7 @@
 }
 .product_info_select :global(.MuiInputBase-root) {
   border: 1px solid #d1d1d1;
-  border-radius: 30px;
+  border-radius: var(--b-r-30);
   padding: 3px 20px;
 }
 .product_info_select :global(.MuiSelect-select) {

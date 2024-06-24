@@ -10,7 +10,15 @@ import { postApplication } from "@/services/application";
 import { CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
 
-export default function Form({ lng }: { lng: string }) {
+export default function Form({
+  lng,
+  text = "Получить консультацию",
+  onlyForm = false,
+}: {
+  lng: string;
+  text?: string;
+  onlyForm?: boolean;
+}) {
   const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
@@ -44,12 +52,15 @@ export default function Form({ lng }: { lng: string }) {
   });
   return (
     <form onSubmit={formik.handleSubmit} className={classes.form}>
-      <h2>Остались вопросы?</h2>
-      <p>
-        {
-          "Оставьте ваши контактные данные и мы свяжемся \n с вами в ближайшее время"
-        }
-      </p>
+      {!onlyForm ? <h2>Остались вопросы?</h2> : null}
+      {!onlyForm ? (
+        <p>
+          {
+            "Оставьте ваши контактные данные и мы свяжемся \n с вами в ближайшее время"
+          }
+        </p>
+      ) : null}
+
       <div className={classes.form_input}>
         <input
           placeholder={"Ваше имя"}
@@ -73,7 +84,7 @@ export default function Form({ lng }: { lng: string }) {
       </div>
       <div className={classes.validation_error}></div>
       <Button className={classes.btn} type="submit">
-        Получить консультацию{" "}
+        {text}
         {loading && (
           <CircularProgress
             size={15}

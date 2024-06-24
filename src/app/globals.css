@@ -25,6 +25,8 @@
   --font90: 6.25vw;
   --font104: 7.2vw;
   --padding-inline: 5.6vw;
+  --b-r-30: 2.5vw;
+  --b-r-20: 1.6vw;
 }
 
 *,
@@ -74,7 +76,7 @@ button {
 }
 
 .layout {
-  margin-top: 124px;
+  margin-top: 84px;
 }
 
 h2 {
@@ -124,17 +126,19 @@ h6 {
     --font90: 90px;
     --font104: 104px;
     --padding-inline: 80px;
+    --b-r-30: 30px;
+    --b-r-20: 20px;
   }
 }
 
 @media (max-width: 1500px) {
   .layout {
-    margin-top: 110px;
+    margin-top: 69px;
   }
 }
-@media (max-width: 1440px) {
+@media (max-width: 1200px) {
   .layout {
-    margin-top: 94px;
+    margin-top: 64px;
   }
 }
 @media (max-width: 1199px) {

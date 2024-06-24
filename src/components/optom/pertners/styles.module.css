@@ -1,10 +1,26 @@
 .partners {
   padding-block: 60px;
-  background-color: #f7f7f7;
 }
 .partners_title {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   white-space: pre-line;
   margin-bottom: 60px;
+  gap: 40px;
+}
+
+.partners_title h2 {
+  margin-bottom: 20px;
+}
+.partners_title p {
+  font-size: var(--font14);
+}
+
+.partners_image {
+  width: 50%;
+  height: auto;
+  aspect-ratio: 4.9/2.2;
+  object-fit: cover;
+  border-radius: var(--b-r-30);
 }

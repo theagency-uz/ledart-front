@@ -7,7 +7,13 @@ import { BrandInterface } from "@/types/interfaces";
 import { getBrands } from "@/services/brand";
 import { strapiImageUrl } from "@/utils/endpoints";
 
-export default function PartnersCards({ lng }: { lng: string }) {
+export default function PartnersCards({
+  lng,
+  background = false,
+}: {
+  lng: string;
+  background?: boolean;
+}) {
   const [data, setData] = useState<BrandInterface[]>([]);
   useEffect(() => {
     (async () => {
@@ -22,7 +28,17 @@ export default function PartnersCards({ lng }: { lng: string }) {
         ? data.map(({ id, attributes }, index) => {
             const { image } = attributes;
             return (
-              <div className={classes.card} key={index}>
+              <div
+                className={classes.card}
+                key={index}
+                style={
+                  background
+                    ? {
+                        backgroundImage: "url(/icons/partnersBack2.svg)",
+                      }
+                    : {}
+                }
+              >
                 <RoundButton
                   href={`/${lng}/catalog?selectedBrands=[${id}]`}
                   className={classes.btn}

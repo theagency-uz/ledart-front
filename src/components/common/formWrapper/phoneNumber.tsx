@@ -16,7 +16,7 @@ export default function PhoneNumber({
           defaultCountry="UZ"
           value={formik.values.phone}
           onChange={(v) => formik.setFieldValue("phone", v)}
-          placeholder="+9989 (99) 999-99-99"
+          placeholder="+998"
           inputProps={{
             required: true,
             name: "phone",

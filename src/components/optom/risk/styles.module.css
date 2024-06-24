@@ -1,0 +1,76 @@
+.risk {
+  background-color: #f7f7f7;
+  padding-block: 60px 80px;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  white-space: pre-line;
+}
+
+.risk_left {
+  width: 45%;
+}
+.risk_left h2 {
+}
+.risk_left p {
+  max-width: 80%;
+  margin-block: 20px 54px;
+  font-size: var(--font14);
+  color: #474747;
+}
+.image_wrapper {
+  aspect-ratio: 5.78/2.44;
+  width: 100%;
+  height: auto;
+}
+.image_wrapper img {
+  position: absolute;
+  object-fit: contain;
+  object-position: left;
+  left: 0;
+}
+.risk_right {
+  width: 45%;
+  display: flex;
+  flex-direction: column;
+  gap: 11px;
+}
+
+.card {
+  background-image: url("/icons/optomBackground.svg");
+  background-size: cover;
+  background-position: top right;
+  border-radius: var(--b-r-30);
+  position: relative;
+  padding: 32px 30px;
+}
+.card h6 {
+  margin-bottom: 15px;
+}
+.card p {
+  color: #474747;
+  font-size: var(--font14);
+}
+.btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.btn img {
+  width: 60%;
+}
+
+.risk_bottom {
+  background-color: #f7f7f7;
+  padding-bottom: 60px;
+  white-space: pre-line;
+}
+.risk_bottom h2 {
+  margin-bottom: 40px;
+}
+
+.bottom_cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

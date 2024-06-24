@@ -2,13 +2,11 @@ import RoundButton from "../roundButton/button";
 import classes from "./styles.module.css";
 
 export default function InfoCard({
-  lng,
   title,
   description,
   icon,
   background,
 }: {
-  lng: string;
   title: string;
   description: string;
   icon: string;

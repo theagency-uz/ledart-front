@@ -9,7 +9,7 @@
   height: auto;
   aspect-ratio: 5/3.1;
   object-fit: cover;
-  border-radius: 30px;
+  border-radius: var(--b-r-30);
 }
 
 .form {

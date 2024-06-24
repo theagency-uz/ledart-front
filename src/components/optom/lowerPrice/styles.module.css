@@ -1,0 +1,10 @@
+.lower_price {
+  background-color: #f7f7f7;
+  padding-block: 60px;
+}
+.cards {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}

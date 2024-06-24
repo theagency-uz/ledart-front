@@ -20,7 +20,6 @@ export default function Professionals({ lng }: { lng: string }) {
               title={title}
               description={description}
               icon={icon}
-              lng={lng}
               key={index}
             />
           );

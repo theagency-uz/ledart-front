@@ -12,6 +12,9 @@
   align-items: center;
   background-image: url("/icons/partnersBack.svg");
   background-size: cover;
+  background-position: right;
+  background-repeat: no-repeat;
+  border-radius: var(--b-r-20);
   position: relative;
 }
 

@@ -98,7 +98,7 @@
     padding-block: 79px 60px;
   }
   .card {
-    border-radius: 30px;
+    border-radius: var(--b-r-30);
     padding-top: 20px;
   }
   .card_image {

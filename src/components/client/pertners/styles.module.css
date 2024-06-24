@@ -1,0 +1,10 @@
+.partners {
+  padding-block: 60px;
+  background-color: #f7f7f7;
+}
+.partners_title {
+  display: flex;
+  justify-content: space-between;
+  white-space: pre-line;
+  margin-bottom: 60px;
+}

@@ -1,10 +1,8 @@
-import FormWrapper from "@/components/common/formWrapper/formWrapper";
-import PortfolioSlider from "@/components/common/portfolioSlider/slider";
-import Partners from "@/components/optom/pertners/partners";
-import SixReasons from "@/components/optom/sixReasons/sixReasons";
-import Karusel from "@/components/common/karusel/karusel";
-import Professionals from "@/components/optom/professionals/professionals";
 import Hero from "@/components/optom/hero/hero";
+import LowerPrice from "@/components/optom/lowerPrice/lowerPrice";
+import Partners from "@/components/optom/pertners/partners";
+import Risk from "@/components/optom/risk/risk";
+import React from "react";
 
 export default function Optom({
   params: { lng },
@@ -12,14 +10,11 @@ export default function Optom({
   params: { lng: string };
 }) {
   return (
-    <>
+    <div>
       <Hero lng={lng} />
-      <Karusel />
-      <SixReasons lng={lng} />
+      <LowerPrice lng={lng} />
       <Partners lng={lng} />
-      <PortfolioSlider lng={lng} />
-      <Professionals lng={lng} />
-      <FormWrapper lng={lng} />
-    </>
+      <Risk lng={lng} />
+    </div>
   );
 }

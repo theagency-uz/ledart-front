@@ -46,6 +46,7 @@ export default function Header({ lng }: PropsInterface) {
         <LangSwitcher lng={lng} />
         <div className={classes.navs}>
           <Link href={`/${lng}/catalog`}>Каталог</Link>
+          <Link href={`/${lng}/client`}>Клиентам</Link>
           <Link href={`/${lng}/optom`}>Оптом</Link>
           <Link href={`/${lng}/contacts`}>Контакты</Link>
         </div>
