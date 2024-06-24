@@ -18,7 +18,7 @@
   aspect-ratio: 515/448;
 
   object-fit: cover;
-  border-radius: var(--b-r-30);
+  border-radius: var(--pixel30);
 }
 
 .aksiya_btns {
@@ -58,7 +58,7 @@
   height: 100%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--pixel20);
 }
 .product_info_h {
 }
@@ -73,7 +73,7 @@
 }
 .product_info_select :global(.MuiInputBase-root) {
   border: 1px solid #d1d1d1;
-  border-radius: var(--b-r-30);
+  border-radius: var(--pixel30);
   padding: 3px 20px;
 }
 .product_info_select :global(.MuiSelect-select) {
@@ -111,7 +111,7 @@
 
 @media (max-width: 1199px) {
   .body {
-    gap: 20px;
+    gap: var(--pixel20);
   }
 }
 @media (max-width: 767px) {

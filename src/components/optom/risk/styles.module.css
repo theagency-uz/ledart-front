@@ -40,7 +40,7 @@
   background-image: url("/icons/optomBackground.svg");
   background-size: cover;
   background-position: top right;
-  border-radius: var(--b-r-30);
+  border-radius: var(--pixel30);
   position: relative;
   padding: 32px 30px;
 }
@@ -72,5 +72,5 @@
 .bottom_cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: var(--pixel20);
 }

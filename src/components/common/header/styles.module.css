@@ -84,7 +84,7 @@
   }
 
   .icons {
-    gap: 20px;
+    gap: var(--pixel20);
   }
   .icons img {
     width: 16px;

@@ -1,5 +1,7 @@
+import FormWrapper from "@/components/common/formWrapper/formWrapper";
 import Hero from "@/components/optom/hero/hero";
 import LowerPrice from "@/components/optom/lowerPrice/lowerPrice";
+import Module from "@/components/optom/module/module";
 import Partners from "@/components/optom/pertners/partners";
 import Risk from "@/components/optom/risk/risk";
 import React from "react";
@@ -15,6 +17,8 @@ export default function Optom({
       <LowerPrice lng={lng} />
       <Partners lng={lng} />
       <Risk lng={lng} />
+      <Module lng={lng} />
+      <FormWrapper lng={lng} />
     </div>
   );
 }

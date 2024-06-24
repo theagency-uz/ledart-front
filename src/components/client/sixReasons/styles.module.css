@@ -14,7 +14,7 @@
 }
 @media (max-width: 1439px) {
   .six_reasons_cards {
-    gap: 20px;
+    gap: var(--pixel20);
     margin-top: 36px;
   }
 }

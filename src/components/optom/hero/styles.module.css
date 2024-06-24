@@ -8,7 +8,7 @@
   height: auto;
   margin-inline: 20px;
   margin-top: 10px;
-  border-radius: var(--b-r-30);
+  border-radius: var(--pixel30);
   aspect-ratio: 11.6/3;
 }
 

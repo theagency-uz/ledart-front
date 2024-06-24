@@ -25,7 +25,7 @@
 
 .icons {
   display: flex;
-  gap: 20px;
+  gap: var(--pixel20);
   margin-top: 16px;
 }
 .middle {
