@@ -13,10 +13,11 @@ import RoundButton from "../roundButton/button";
 import classes from "./styles.module.css";
 import "swiper/css";
 import "swiper/css/navigation";
+import { Swiper as SwiperType } from "swiper/types";
 
 export default function Aksiya({ lng }: { lng: string }) {
   const [products, setProducts] = useState<ProductsInterface>();
-  const swiper = useRef<any>(null);
+  const swiperRef = useRef<SwiperType | null>(null);
   useEffect(() => {
     (async () => {
       const products = await getProducts({
@@ -44,13 +45,13 @@ export default function Aksiya({ lng }: { lng: string }) {
   };
 
   const handlePrev = useCallback(() => {
-    if (!swiper.current) return;
-    swiper.current.swiper.slidePrev();
+    if (!swiperRef.current) return;
+    swiperRef.current.slidePrev();
   }, []);
 
   const handleNext = useCallback(() => {
-    if (!swiper.current) return;
-    swiper.current.swiper.slideNext();
+    if (!swiperRef.current) return;
+    swiperRef.current.slideNext();
   }, []);
 
   return (
@@ -68,7 +69,9 @@ export default function Aksiya({ lng }: { lng: string }) {
       </div>
       <Swiper
         loop
-        ref={swiper}
+        onBeforeInit={(swiper) => {
+          swiperRef.current = swiper;
+        }}
         slidesPerView={3}
         spaceBetween={10}
         breakpoints={breakpoints}
