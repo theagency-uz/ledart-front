@@ -82,7 +82,6 @@ export default function Form({
           <span className={classes.error}>{formik.errors.phone}</span>
         )}
       </div>
-      <div className={classes.validation_error}></div>
       <Button className={classes.btn} type="submit">
         {text}
         {loading && (

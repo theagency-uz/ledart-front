@@ -31,7 +31,9 @@ export default function Module({ lng }: { lng: string }) {
             проекта – от концепции до воплощения и дальнейшей эксплуатации.
           </p>
         </div>
-        <Button className={classes.view_btn}>Смотреть каталог</Button>
+        <Button href={`/${lng}/catalog`} className={classes.view_btn}>
+          Смотреть каталог
+        </Button>
       </div>
       <div className={classes.module_bottom}>
         <div className={classes.card}>

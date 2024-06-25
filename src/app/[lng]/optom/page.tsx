@@ -1,4 +1,5 @@
 import FormWrapper from "@/components/common/formWrapper/formWrapper";
+import Certificate from "@/components/optom/certificate/certificate";
 import Hero from "@/components/optom/hero/hero";
 import LowerPrice from "@/components/optom/lowerPrice/lowerPrice";
 import Module from "@/components/optom/module/module";
@@ -18,6 +19,7 @@ export default function Optom({
       <Partners lng={lng} />
       <Risk lng={lng} />
       <Module lng={lng} />
+      <Certificate lng={lng} />
       <FormWrapper lng={lng} />
     </div>
   );

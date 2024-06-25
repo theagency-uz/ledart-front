@@ -11,7 +11,7 @@ import "swiper/css/navigation";
 import classes from "./styles.module.css";
 import Image from "next/image";
 import { Swiper as SwiperType } from "swiper/types";
-import { Swiper, SwiperSlide, useSwiperSlide } from "swiper/react";
+import { Swiper, SwiperSlide } from "swiper/react";
 import Button from "../button/button";
 import { getProjects } from "@/services/project";
 import { PortfolioProjectInterface } from "@/types/interfaces";
@@ -19,7 +19,6 @@ import { strapiImageUrl } from "@/utils/endpoints";
 
 export default function PortfolioSlider({ lng }: { lng: string }) {
   const [projects, setProjects] = useState<PortfolioProjectInterface[]>([]);
-  const swiperSlide = useSwiperSlide();
   const [activeIndex, setActiveIndex] = useState(0);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const mainSwiperRef = useRef<SwiperType | null>(null);
