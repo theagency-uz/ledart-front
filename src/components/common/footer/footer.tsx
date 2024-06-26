@@ -43,7 +43,9 @@ export default function Footer({ lng }: PropsInterface) {
             </a>
           </div>
         </div>
-        <LangSwitcher lng={lng} backColor="#222222" />
+        <div className={classes.dn}>
+          <LangSwitcher lng={lng} backColor="#222222" />
+        </div>
       </div>
       <div className={classes.middle}>
         <h6>
@@ -86,7 +88,12 @@ export default function Footer({ lng }: PropsInterface) {
             </a>
           </h6>
         </div>
-        <Link href="https://theagency.uz/ru">Сайт разработан The Agency</Link>
+        <Link href="https://theagency.uz/ru" className={classes.by_agency}>
+          Сайт разработан The Agency
+        </Link>
+        <div className={classes.db}>
+          <LangSwitcher lng={lng} backColor="#222222" />
+        </div>
       </div>
     </Container>
   );

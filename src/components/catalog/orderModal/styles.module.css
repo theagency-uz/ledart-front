@@ -1,0 +1,81 @@
+.dialog_wrapper :global(.MuiPaper-root) {
+  border-radius: var(--pixel30);
+  background-color: #f7f7f7;
+  max-width: 560px;
+}
+
+.dialog {
+  padding: 40px;
+}
+.dialog h6 {
+  color: #60646d;
+  margin-block: 40px 20px;
+}
+.dialog p {
+  color: #60646d;
+}
+
+.logo {
+  aspect-ratio: 2/1;
+  width: 9vw;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
+  display: flex;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.form_input {
+  padding: 15px 30px;
+  font-size: var(--font14);
+  /* border: 1px solid #bebebe; */
+  border-radius: 50px;
+  position: relative;
+  background-color: transparent;
+  background-color: #fff;
+}
+
+.form_input input {
+  border: none;
+  width: 100%;
+  outline: none;
+  background-color: transparent;
+}
+
+.form_input input:-webkit-autofill,
+.form_input input:-webkit-autofill:focus {
+  transition: background-color 0s 600000s, color 0s 600000s !important;
+}
+
+.form_input :global(.form-control) {
+  border: none !important;
+  height: fit-content !important;
+}
+
+.form_input :global(.flag-dropdown) {
+  border: none !important;
+  background-color: transparent !important;
+}
+.btn {
+  padding-block: 15px;
+  width: 100%;
+}
+.error {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translate(-10%, -50%);
+  color: #ff0000;
+}
+
+@media (max-width: 1199px) {
+  .logo {
+    width: 112px;
+  }
+}

@@ -18,3 +18,10 @@
     margin-bottom: 30px;
   }
 }
+@media (max-width: 992px) {
+  .partners h3 {
+    white-space: pre-line;
+    text-align: start;
+    margin-bottom: 20px;
+  }
+}

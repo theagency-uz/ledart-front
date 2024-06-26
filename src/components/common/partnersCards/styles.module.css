@@ -12,7 +12,7 @@
   align-items: center;
   background-image: url("/icons/partnersBack.svg");
   background-size: cover;
-  background-position: right;
+  background-position: top right;
   background-repeat: no-repeat;
   border-radius: var(--pixel20);
   position: relative;
@@ -31,5 +31,26 @@
 @media (max-width: 1199px) {
   .cards {
     gap: var(--pixel20);
+  }
+}
+
+@media (max-width: 992px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+}
+@media (max-width: 600px) {
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+  .card {
+    background-image: url("/icons/asdasd.svg");
+  }
+  .card_image {
+    width: 75%;
   }
 }

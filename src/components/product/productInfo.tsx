@@ -5,6 +5,7 @@ import Button from "../common/button/button";
 import { FormControl, MenuItem, Select } from "@mui/material";
 
 import classes from "./styles.module.css";
+import OrderModal from "../catalog/orderModal/orderModal";
 
 export default function ProductInfo({
   product,
@@ -54,7 +55,12 @@ export default function ProductInfo({
         })}
       </div>
       <div className={classes.product_info_bottom}>
-        <Button className={classes.product_info_bottom_btn}>Заказать</Button>
+        <OrderModal
+          lng={lng}
+          className={classes.product_info_bottom_btn}
+          product={{ name: product.attributes.name, resolution: resolution }}
+        />
+
         <b>{product.attributes.price}</b>
       </div>
     </div>

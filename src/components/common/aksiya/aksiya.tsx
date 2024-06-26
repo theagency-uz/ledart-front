@@ -30,14 +30,11 @@ export default function Aksiya({ lng }: { lng: string }) {
   }, []);
 
   const breakpoints = {
-    "1440": {
+    "1024": {
       slidesPerView: 3,
     },
-    "768": {
+    "600": {
       slidesPerView: 2,
-    },
-    "425": {
-      slidesPerView: 1,
     },
     "200": {
       slidesPerView: 1,
