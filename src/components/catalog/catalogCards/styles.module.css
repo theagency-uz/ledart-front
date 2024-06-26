@@ -2,6 +2,7 @@
   display: grid;
   grid-template-columns: 20% 80%;
   position: relative;
+  gap: 20px;
 }
 
 .cards {
@@ -56,4 +57,34 @@
 
 .filter_btn:hover {
   background-color: transparent;
+}
+
+@media (max-width: 1023px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 992px) {
+  .cards_wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .cards {
+    grid-template-columns: 100%;
+  }
+  .drawer {
+    margin-block: 60px 30px;
+  }
+  .filter_wrapper_p {
+    cursor: pointer;
+  }
+  .filter_wrapper_top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .filter_wrapper_top_btn {
+    cursor: pointer;
+    transform: rotate(45deg);
+  }
 }

@@ -10,6 +10,7 @@ import {
 } from "@/types/interfaces";
 import FilterCards from "./filter";
 import { getTypes } from "@/services/category";
+import { useMediaQuery } from "@mui/material";
 
 export interface FilterCardsInterface {
   categories: CategoryInterface[];
@@ -37,6 +38,7 @@ export default function CatalogCards({
     predzakaz,
     all,
   } = props;
+  const wd = useMediaQuery("(min-width:992px)");
   const [products, setProducts] = useState<ProductsInterface>();
   const [types, setTypes] = useState([]);
   const [selectedType, setSelectedType] = useState("");
