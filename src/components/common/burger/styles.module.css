@@ -203,7 +203,7 @@
   object-position: left;
 }
 
-@media (max-width: 767px) {
+@media (max-width: 992px) {
   .burger_wrapper {
     height: 100svh;
   }
@@ -220,6 +220,11 @@
     gap: 20px;
     justify-content: center;
     align-items: center;
+  }
+  .social_media img {
+    width: 25px;
+    height: 25px;
+    object-fit: contain;
   }
   .header {
     flex-direction: row-reverse;

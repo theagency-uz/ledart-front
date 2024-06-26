@@ -94,13 +94,13 @@ export default function Burger({
           </div>
           <div className={classes.footer}>
             <div className={classes.social_media}>
-              <LangSwitcher lng={lng} />
               <a href={contacts?.attributes?.instagram || ""}>
-                <img src="/icons/header_insta.svg" alt="header icon" />
+                <img src="/icons/black-insta.svg" alt="header icon" />
               </a>
+              <LangSwitcher lng={lng} color="#000" backColor="#fff" />
               <a href={contacts?.attributes.telegram || ""}>
                 <img
-                  src={"/icons/header_telegram.svg"}
+                  src={"/icons/black-tg.svg"}
                   alt="social_media"
                   height={25}
                   width={25}

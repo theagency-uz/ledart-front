@@ -7,9 +7,11 @@ import classes from "./styles.module.css";
 export default function LangSwitcher({
   lng,
   backColor = "#6219a5",
+  color = "#fff",
 }: {
   lng: string;
   backColor?: string;
+  color?: string;
 }) {
   const [locale, setLocale] = useState(lng);
   const pathName = usePathname();
@@ -37,10 +39,21 @@ export default function LangSwitcher({
           ".MuiPaper-root": {
             backgroundColor: backColor,
           },
+          ".MuiSelect-select": {
+            color: color,
+          },
+          ".MuiSvgIcon-root": {
+            color: color,
+            right: "-6px",
+          },
         }}
       >
-        <MenuItem value={"uz"}>uz</MenuItem>
-        <MenuItem value={"ru"}>ru</MenuItem>
+        <MenuItem sx={{ color: color }} value={"uz"}>
+          uz
+        </MenuItem>
+        <MenuItem sx={{ color: color }} value={"ru"}>
+          ru
+        </MenuItem>
       </Select>
     </div>
   );
