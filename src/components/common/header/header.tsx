@@ -15,6 +15,7 @@ interface PropsInterface {
 
 export default function Header({ lng }: PropsInterface) {
   const path = usePathname();
+  const [windowWidth, setWindowWidth] = useState<number>();
   const [contacts, setContacts] = useState<SettingsInterface>();
   const [scrollStyle, setScrollStyle] = useState<string>("header_home");
   const [scrollStyleMobile, setScrollStyleMobile] =
@@ -23,7 +24,7 @@ export default function Header({ lng }: PropsInterface) {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition =
-        window.scrollY || document.documentElement.scrollTop;
+        window?.scrollY || document.documentElement.scrollTop;
       if (scrollPosition > 0) {
         setScrollStyle("header");
         setScrollStyleMobile("header_mobile");
@@ -32,10 +33,19 @@ export default function Header({ lng }: PropsInterface) {
         setScrollStyleMobile("header_mobile_home");
       }
     };
-    window.addEventListener("scroll", handleScroll);
+    window?.addEventListener("scroll", handleScroll);
     return () => {
-      window.removeEventListener("scroll", handleScroll);
+      window?.removeEventListener("scroll", handleScroll);
     };
+  }, []);
+
+  useEffect(() => {
+    function handleResize() {
+      setWindowWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   useEffect(() => {
@@ -44,7 +54,7 @@ export default function Header({ lng }: PropsInterface) {
       setContacts(contacts);
     })();
   }, []);
-  if (window.innerWidth > 992) {
+  if (windowWidth && windowWidth > 992) {
     return (
       <div
         className={path === `/${lng}` ? classes[scrollStyle] : classes.header}

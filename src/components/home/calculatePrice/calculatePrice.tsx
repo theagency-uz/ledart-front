@@ -7,9 +7,10 @@ import PhoneNumber from "@/components/common/formWrapper/phoneNumber";
 import { toast } from "react-toastify";
 
 import classes from "./styles.module.css";
-import { CircularProgress } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 export default function CalculatePrice({ lng }: { lng: string }) {
+  const pathName = usePathname();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -25,7 +26,7 @@ export default function CalculatePrice({ lng }: { lng: string }) {
           name,
           phone,
           lng: lng,
-          url: window.location.href,
+          url: pathName,
         });
 
         toast.success("Успешно отправлен!");
@@ -36,6 +37,8 @@ export default function CalculatePrice({ lng }: { lng: string }) {
       }
     },
   });
+
+  console.log();
 
   return (
     <Container>

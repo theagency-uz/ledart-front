@@ -9,6 +9,7 @@ import classes from "./styles.module.css";
 import { postApplication } from "@/services/application";
 import { CircularProgress } from "@mui/material";
 import { toast } from "react-toastify";
+import { usePathname } from "next/navigation";
 
 export default function Form({
   lng,
@@ -20,7 +21,7 @@ export default function Form({
   onlyForm?: boolean;
 }) {
   const [loading, setLoading] = useState(false);
-
+  const pathName = usePathname();
   const formik = useFormik({
     initialValues: {
       name: "",
@@ -38,7 +39,7 @@ export default function Form({
           name,
           phone,
           lng: lng,
-          url: window.location.href,
+          url: pathName,
         });
 
         setLoading(false);

@@ -1,3 +1,4 @@
+"use client";
 import Button from "@/components/common/button/button";
 import classes from "./styles.module.css";
 import { CircularProgress, Dialog } from "@mui/material";
@@ -8,6 +9,7 @@ import { postApplication } from "@/services/application";
 import { toast } from "react-toastify";
 import PhoneNumber from "@/components/common/formWrapper/phoneNumber";
 import { request } from "http";
+import { usePathname } from "next/navigation";
 
 export default function OrderModal({
   lng,
@@ -18,6 +20,7 @@ export default function OrderModal({
   className: string;
   product: { name: string; resolution: string };
 }) {
+  const pathName = usePathname();
   const [open, setOpen] = useState(false);
   const handleChange = () => {
     setOpen(!open);
@@ -47,7 +50,7 @@ export default function OrderModal({
             product.resolution ? "\nРасширение:" + product.resolution : ""
           }`,
           lng: lng,
-          url: window.location.href,
+          url: pathName,
         });
 
         setLoading(false);
