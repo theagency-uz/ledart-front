@@ -101,8 +101,8 @@
 .next_btn,
 .prev_btn {
   cursor: pointer;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: var(--pixel30);
+  height: var(--pixel30);
   z-index: 4;
   border-radius: 50%;
   display: flex;
@@ -136,12 +136,33 @@
 }
 .slider_content_info {
 }
+.mobile_swiper_wrapper {
+  position: relative;
+  padding-top: 40px;
+}
 
-@media (max-width: 992px) {
-  .slider_desktop {
-    display: none;
+.mobile_swiper {
+  display: flex;
+  flex-direction: column;
+  background-color: #f7f7f7;
+  border-radius: 20px;
+}
+
+@media (max-width: 1023px) {
+  .productMainSwiper {
+    width: 100%;
   }
-  .slider_mobile {
-    display: block;
+  .slider_content {
+    margin-top: 30px;
+    padding-bottom: 25px;
+    background-image: none;
+  }
+  .slider_btns {
+    position: static;
+    justify-content: center;
+    margin-top: 15px;
+  }
+  .mobile_swiper_wrapper :global(.swiper-slide) {
+    justify-content: center;
   }
 }

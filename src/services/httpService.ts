@@ -1,12 +1,11 @@
-
 import { strapiUrl } from "@/utils/endpoints";
 import axios from "axios";
 
-
-
 axios.interceptors.response.use(null, (error) => {
   const expectedError =
-    error.response && error.response.status >= 400 && error.response.status < 500;
+    error.response &&
+    error.response.status >= 400 &&
+    error.response.status < 500;
   if (expectedError) {
     return Promise.reject(error);
   }
@@ -37,7 +36,6 @@ const http = {
 export const strapi = axios.create({
   baseURL: strapiUrl,
 });
-
 
 export default http;
 

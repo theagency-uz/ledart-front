@@ -85,8 +85,8 @@
 .next_btn,
 .prev_btn {
   cursor: pointer;
-  width: 2.5vw;
-  height: 2.5vw;
+  width: var(--pixel30);
+  height: var(--pixel30);
   z-index: 4;
   border-radius: 50%;
   display: flex;

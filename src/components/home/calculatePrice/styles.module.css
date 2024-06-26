@@ -18,8 +18,6 @@
 .calculate_price_left {
   width: 35%;
 }
-.calculate_price_left h2 {
-}
 .calculate_price_left p {
   margin-top: 13px;
 }
@@ -74,4 +72,19 @@
 .form_input :global(.country-list) {
   border: none !important;
   background: rgb(68, 29, 181);
+}
+
+@media (max-width: 992px) {
+  .calculate_price {
+    flex-direction: column;
+    gap: 30px;
+    padding: 50px 15px;
+    margin-bottom: 30px;
+  }
+  .calculate_price_left {
+    width: 100%;
+  }
+  .calculate_price_right {
+    width: 100%;
+  }
 }

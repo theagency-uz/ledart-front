@@ -16,8 +16,10 @@ import Button from "../button/button";
 import { getProjects } from "@/services/project";
 import { PortfolioProjectInterface } from "@/types/interfaces";
 import { strapiImageUrl } from "@/utils/endpoints";
+import { useMediaQuery } from "@mui/material";
 
 export default function PortfolioSlider({ lng }: { lng: string }) {
+  const wd = useMediaQuery("(min-width:1024px)");
   const [projects, setProjects] = useState<PortfolioProjectInterface[]>([]);
   const [activeIndex, setActiveIndex] = useState(0);
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
@@ -43,87 +45,144 @@ export default function PortfolioSlider({ lng }: { lng: string }) {
       mainSwiperRef.current.slideNext();
     }
   };
-
+  if (wd) {
+    return (
+      <Container className={classes.slider_wrapper}>
+        <h2>Портфолио работ</h2>
+        <div className={classes.slider}>
+          <div className={classes.slider_desktop}>
+            <Swiper
+              modules={[FreeMode, Navigation, Thumbs]}
+              direction={"vertical"}
+              slidesPerView={4}
+              spaceBetween={8}
+              watchSlidesProgress={true}
+              onSwiper={setThumbsSwiper}
+              className={classes.productBottomSwiper}
+            >
+              {projects.map(({ id, attributes }) => (
+                <SwiperSlide
+                  className={classes.productBottomSwiper_item}
+                  key={id}
+                >
+                  <Image
+                    src={strapiImageUrl + attributes.image.data.attributes.url}
+                    width={100}
+                    height={100}
+                    alt="slider-image"
+                    className={classes.sliderImg_small}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+            <Swiper
+              ref={swiperRef}
+              modules={[FreeMode, Navigation, Thumbs]}
+              spaceBetween={10}
+              slidesPerView={1}
+              thumbs={{ swiper: thumbsSwiper }}
+              className={classes.productMainSwiper}
+              onSwiper={(swiper) => {
+                mainSwiperRef.current = swiper;
+              }}
+              onSlideChange={(e) => {
+                setActiveIndex(e.activeIndex);
+              }}
+            >
+              {projects.map(({ id, attributes }) => (
+                <SwiperSlide
+                  className={classes.productMainSwiper_item}
+                  key={id}
+                >
+                  <Image
+                    src={strapiImageUrl + attributes.image.data.attributes.url}
+                    width={470}
+                    height={410}
+                    alt="slider-image"
+                    className={classes.sliderImg}
+                  />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
+          <div className={classes.slider_content}>
+            <h5>{projects[activeIndex]?.attributes.name}</h5>
+            <div className={classes.slider_content_infos}>
+              {projects[activeIndex]?.attributes.characteristics.map(
+                ({ value, name }, index) => {
+                  return (
+                    <div key={index} className={classes.slider_content_info}>
+                      <p>{name}</p>
+                      <p>{value}</p>
+                    </div>
+                  );
+                }
+              )}
+            </div>
+            <div className={classes.slider_btns}>
+              <Button className={classes.prev_btn} onClick={() => handlePrev()}>
+                <img src="/icons/arrow_top_right.svg" />
+              </Button>
+              <Button className={classes.next_btn} onClick={() => handleNext()}>
+                <img src="/icons/arrow_top_right.svg" />
+              </Button>
+            </div>
+          </div>
+        </div>
+      </Container>
+    );
+  }
   return (
-    <Container className={classes.slider_wrapper}>
-      <h2>Портфолио работ</h2>
-      <div className={classes.slider}>
-        <div className={classes.slider_desktop}>
-          <Swiper
-            modules={[FreeMode, Navigation, Thumbs]}
-            direction={"vertical"}
-            slidesPerView={4}
-            spaceBetween={8}
-            watchSlidesProgress={true}
-            onSwiper={setThumbsSwiper}
-            className={classes.productBottomSwiper}
-          >
-            {projects.map(({ id, attributes }) => (
-              <SwiperSlide
-                className={classes.productBottomSwiper_item}
-                key={id}
-              >
-                <Image
-                  src={strapiImageUrl + attributes.image.data.attributes.url}
-                  width={100}
-                  height={100}
-                  alt="slider-image"
-                  className={classes.sliderImg_small}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-          <Swiper
-            ref={swiperRef}
-            modules={[FreeMode, Navigation, Thumbs]}
-            spaceBetween={10}
-            slidesPerView={1}
-            thumbs={{ swiper: thumbsSwiper }}
-            className={classes.productMainSwiper}
-            onSwiper={(swiper) => {
-              mainSwiperRef.current = swiper;
-            }}
-            onSlideChange={(e) => {
-              setActiveIndex(e.activeIndex);
-            }}
-          >
-            {projects.map(({ id, attributes }) => (
-              <SwiperSlide className={classes.productMainSwiper_item} key={id}>
-                <Image
-                  src={strapiImageUrl + attributes.image.data.attributes.url}
-                  width={470}
-                  height={410}
-                  alt="slider-image"
-                  className={classes.sliderImg}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-        <div className={classes.slider_mobile}></div>
-        <div className={classes.slider_content}>
-          <h5>{projects[activeIndex]?.attributes.name}</h5>
-          <div className={classes.slider_content_infos}>
-            {projects[activeIndex]?.attributes.characteristics.map(
-              ({ value, name }, index) => {
-                return (
-                  <div key={index} className={classes.slider_content_info}>
-                    <p>{name}</p>
-                    <p>{value}</p>
-                  </div>
-                );
-              }
-            )}
-          </div>
-          <div className={classes.slider_btns}>
-            <Button className={classes.prev_btn} onClick={() => handlePrev()}>
-              <img src="/icons/arrow_top_right.svg" />
-            </Button>
-            <Button className={classes.next_btn} onClick={() => handleNext()}>
-              <img src="/icons/arrow_top_right.svg" />
-            </Button>
-          </div>
-        </div>
+    <Container className={classes.mobile_swiper_wrapper}>
+      <Swiper
+        ref={swiperRef}
+        modules={[FreeMode, Navigation, Thumbs]}
+        spaceBetween={10}
+        slidesPerView={1}
+        thumbs={{ swiper: thumbsSwiper }}
+        className={classes.productMainSwiper}
+        loop
+        onSwiper={(swiper) => {
+          mainSwiperRef.current = swiper;
+        }}
+        onSlideChange={(e) => {
+          setActiveIndex(e.activeIndex);
+        }}
+      >
+        {projects.map(({ id, attributes }) => (
+          <SwiperSlide className={classes.productMainSwiper_item} key={id}>
+            <div className={classes.mobile_swiper}>
+              <Image
+                src={strapiImageUrl + attributes.image.data.attributes.url}
+                width={470}
+                height={410}
+                alt="slider-image"
+                className={classes.sliderImg}
+              />
+              <div className={classes.slider_content}>
+                <h5>{attributes.name}</h5>
+                <div className={classes.slider_content_infos}>
+                  {attributes.characteristics.map(({ value, name }, index) => {
+                    return (
+                      <div key={index} className={classes.slider_content_info}>
+                        <p>{name}</p>
+                        <p>{value}</p>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            </div>
+          </SwiperSlide>
+        ))}
+      </Swiper>
+      <div className={classes.slider_btns}>
+        <Button className={classes.prev_btn} onClick={() => handlePrev()}>
+          <img src="/icons/arrow_top_right.svg" />
+        </Button>
+        <Button className={classes.next_btn} onClick={() => handleNext()}>
+          <img src="/icons/arrow_top_right.svg" />
+        </Button>
       </div>
     </Container>
   );

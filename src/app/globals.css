@@ -52,8 +52,6 @@ body {
 }
 
 main {
-  display: flex;
-  flex-direction: column;
   min-height: 100vh;
 }
 
@@ -108,8 +106,8 @@ h6 {
   :root {
     --font12: 12px;
     --font14: 14px;
-    --font16: clamp(0.875rem, 0.8182rem + 0.2424vw, 1rem);
-    --font18: 18px;
+    --font16: 16px;
+    --font18: clamp(0.875rem, 0.7841rem + 0.4545vw, 1.125rem);
     --font20: 20px;
     --font23: 23px;
     --font24: 24px;

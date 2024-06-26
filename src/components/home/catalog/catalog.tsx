@@ -42,7 +42,7 @@ export default function Catalog({ lng }: { lng: string }) {
                     />
                   </RoundButton>
                   <div>
-                    <h3>{name}</h3>
+                    <h4>{name}</h4>
                     <p>{description}</p>
                   </div>
                   <div className={classes.card_image}>

@@ -14,7 +14,10 @@ export default function AboutCards({ lng }: { lng: string }) {
               "LedART — лидер \nпо поставке комплектующих\n для LED-экранов в СНГ "
             }
           </h2>
-          <Button href={`/${lng}/about`} className={classes.about_top_btn}>
+          <Button
+            href={`/${lng}/about`}
+            className={`${classes.about_top_btn} ${classes.dn}`}
+          >
             Подробнее о компании
           </Button>
         </div>
@@ -46,6 +49,12 @@ export default function AboutCards({ lng }: { lng: string }) {
           );
         })}
       </div>
+      <Button
+        href={`/${lng}/about`}
+        className={`${classes.about_top_btn} ${classes.db}`}
+      >
+        Подробнее о компании
+      </Button>
     </Container>
   );
 }

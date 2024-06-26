@@ -4,9 +4,8 @@
   width: 100%;
   height: auto;
   aspect-ratio: 328/175;
-  border-bottom-left-radius: 2.5vw;
-  border-bottom-right-radius: 2.5vw;
-  padding: 2.5vw;
+  border-radius: var(--pixel30);
+  padding: var(--pixel30);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -28,12 +27,4 @@
   max-width: 90%;
   font-size: var(--font14);
   color: #474747;
-}
-
-@media (max-width: 1439px) {
-  .card {
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
-    padding: 30px;
-  }
 }
