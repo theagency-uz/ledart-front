@@ -27,7 +27,7 @@ export default function PortfolioSlider({ lng }: { lng: string }) {
   useEffect(() => {
     (async () => {
       const data = await getProjects({ lng });
-      console.log(data);
+
       setProjects(data);
     })();
   }, []);

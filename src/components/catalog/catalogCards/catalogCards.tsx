@@ -60,7 +60,6 @@ export default function CatalogCards({
         lng,
         categoryId: category ? category.id : 0,
       });
-      console.log(products);
 
       setTypes(types);
       setProducts(products);

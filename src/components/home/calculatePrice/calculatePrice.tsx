@@ -38,8 +38,6 @@ export default function CalculatePrice({ lng }: { lng: string }) {
     },
   });
 
-  console.log();
-
   return (
     <Container>
       <div className={classes.calculate_price}>

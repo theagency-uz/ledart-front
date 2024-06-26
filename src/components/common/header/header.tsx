@@ -8,14 +8,15 @@ import { useEffect, useState } from "react";
 import { SettingsInterface } from "@/types/interfaces";
 import { getSettings } from "@/services/settings";
 import Burger from "../burger/burger";
+import { useMediaQuery } from "@mui/material";
 
 interface PropsInterface {
   lng: string;
 }
 
 export default function Header({ lng }: PropsInterface) {
+  const wd = useMediaQuery("(min-width:992px)");
   const path = usePathname();
-  const [windowWidth, setWindowWidth] = useState<number>();
   const [contacts, setContacts] = useState<SettingsInterface>();
   const [scrollStyle, setScrollStyle] = useState<string>("header_home");
   const [scrollStyleMobile, setScrollStyleMobile] =
@@ -40,21 +41,13 @@ export default function Header({ lng }: PropsInterface) {
   }, []);
 
   useEffect(() => {
-    function handleResize() {
-      setWindowWidth(window.innerWidth);
-    }
-    window.addEventListener("resize", handleResize);
-
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
     (async () => {
       const contacts = await getSettings({ lng });
       setContacts(contacts);
     })();
   }, []);
-  if (windowWidth && windowWidth > 992) {
+
+  if (wd) {
     return (
       <div
         className={path === `/${lng}` ? classes[scrollStyle] : classes.header}
