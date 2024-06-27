@@ -49,6 +49,7 @@
   }
   .card {
     background-image: url("/icons/asdasd.svg");
+    aspect-ratio: 235/165;
   }
   .card_image {
     width: 75%;
