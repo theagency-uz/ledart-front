@@ -63,3 +63,9 @@
     width: 100px;
   }
 }
+
+@media (max-width: 992px) {
+  .karusel_wrapper {
+    margin-top: 30px;
+  }
+}

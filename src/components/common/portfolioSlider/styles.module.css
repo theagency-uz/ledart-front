@@ -138,7 +138,7 @@
 }
 .mobile_swiper_wrapper {
   position: relative;
-  padding-top: 40px;
+  padding-block: 40px;
 }
 
 .mobile_swiper {

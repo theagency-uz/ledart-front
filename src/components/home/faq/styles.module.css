@@ -47,7 +47,7 @@
     padding: 0;
   }
   .faq_wrapper {
-    margin-block: 60px;
+    margin-block: 20px 60px;
   }
   .faq h5 {
     max-width: 100%;

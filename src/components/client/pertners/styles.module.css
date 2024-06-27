@@ -8,3 +8,11 @@
   white-space: pre-line;
   margin-bottom: 60px;
 }
+
+@media (max-width: 992px) {
+  .partners_title {
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+  }
+}

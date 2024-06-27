@@ -133,14 +133,9 @@ h6 {
   }
 }
 
-@media (max-width: 1500px) {
-  .layout {
-    margin-top: 69px;
-  }
-}
 @media (max-width: 1200px) {
   .layout {
-    margin-top: 64px;
+    margin-top: 76px;
   }
 }
 @media (max-width: 1199px) {
