@@ -1,14 +1,3 @@
 .home {
-  margin-top: -84px;
-}
-
-@media (max-width: 1500px) {
-  .home {
-    margin-top: -69px;
-  }
-}
-@media (max-width: 1200px) {
-  .home {
-    margin-top: -64px;
-  }
+  margin-top: calc(var(--page-mt) * -1);
 }

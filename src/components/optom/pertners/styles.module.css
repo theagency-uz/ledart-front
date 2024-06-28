@@ -24,3 +24,18 @@
   object-fit: cover;
   border-radius: var(--pixel30);
 }
+
+@media (max-width: 767px) {
+  .partners {
+    padding-block: 50px;
+  }
+  .partners_title {
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 40px;
+  }
+  .partners_image {
+    width: 100%;
+    aspect-ratio: 3/3.2;
+  }
+}

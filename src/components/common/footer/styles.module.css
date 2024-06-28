@@ -33,8 +33,7 @@
   flex-direction: column;
   gap: 10px;
 }
-.middle h6 {
-}
+
 .middle p {
   display: flex;
   flex-direction: column;

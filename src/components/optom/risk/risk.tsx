@@ -62,7 +62,7 @@ export default function Risk({ lng }: { lng: string }) {
         <div className={classes.risk_right}>
           {data.map(({ title, p, icon }, index) => {
             return (
-              <div className={classes.card}>
+              <div className={classes.card} key={index}>
                 <h6>{title}</h6>
                 <p>{p}</p>
                 <RoundButton className={classes.btn}>
@@ -82,7 +82,7 @@ export default function Risk({ lng }: { lng: string }) {
         <div className={classes.bottom_cards}>
           {data2.map(({ title, p, icon }, index) => {
             return (
-              <div className={classes.card}>
+              <div className={classes.card} key={index}>
                 <h6>{title}</h6>
                 <p>{p}</p>
                 <RoundButton className={classes.btn}>

@@ -28,6 +28,7 @@ export default function Catalog({ lng }: { lng: string }) {
               const { name, slug, description, tag, image } = attributes;
               return (
                 <div
+                  key={index}
                   className={`${classes.card} ${
                     classes["card_" + (index + 1)]
                   }`}

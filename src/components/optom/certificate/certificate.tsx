@@ -104,6 +104,14 @@ export default function Certificate({ lng }: { lng: string }) {
             </SwiperSlide>
           ))}
         </Swiper>
+        <div className={classes.slider_btns_2}>
+          <Button className={classes.prev_btn} onClick={() => handlePrev()}>
+            <img src="/icons/arrow_top_right.svg" />
+          </Button>
+          <Button className={classes.next_btn} onClick={() => handleNext()}>
+            <img src="/icons/arrow_top_right.svg" />
+          </Button>
+        </div>
       </div>
     </Container>
   );

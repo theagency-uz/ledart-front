@@ -86,7 +86,7 @@ export default function Aksiya({ lng }: { lng: string }) {
                 previewImage,
               } = card.attributes;
               return (
-                <SwiperSlide className={classes.card}>
+                <SwiperSlide className={classes.card} key={index}>
                   <div className={classes.image}>
                     <Image
                       unoptimized

@@ -27,6 +27,7 @@
   --padding-inline: 5.6vw;
   --pixel30: 2.5vw;
   --pixel20: 1.6vw;
+  --page-mt: 80px;
 }
 
 *,
@@ -51,8 +52,8 @@ body {
   font-weight: 350;
 }
 
-main {
-  min-height: 100vh;
+.layout {
+  margin-top: var(--page-mt);
 }
 
 a {
@@ -74,7 +75,7 @@ button {
 }
 
 .layout {
-  margin-top: 84px;
+  margin-top: var(--page-mt);
 }
 
 h1 {
@@ -130,14 +131,10 @@ h6 {
     --padding-inline: 80px;
     --pixel30: 30px;
     --pixel20: 20px;
+    --page-mt: 76px;
   }
 }
 
-@media (max-width: 1200px) {
-  .layout {
-    margin-top: 76px;
-  }
-}
 @media (max-width: 1199px) {
   :root {
     --padding-inline: 40px;

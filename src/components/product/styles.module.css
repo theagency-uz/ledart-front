@@ -60,8 +60,7 @@
   flex-direction: column;
   gap: var(--pixel20);
 }
-.product_info_h {
-}
+
 .product_info_select {
   width: fit-content;
 }

@@ -8,14 +8,12 @@ import { useEffect, useState } from "react";
 import { SettingsInterface } from "@/types/interfaces";
 import { getSettings } from "@/services/settings";
 import Burger from "../burger/burger";
-import { useMediaQuery } from "@mui/material";
 
 interface PropsInterface {
   lng: string;
 }
 
 export default function Header({ lng }: PropsInterface) {
-  const wd = useMediaQuery("(min-width:992px)");
   const path = usePathname();
   const [contacts, setContacts] = useState<SettingsInterface>();
   const [scrollStyle, setScrollStyle] = useState<string>("header_home");
@@ -47,43 +45,42 @@ export default function Header({ lng }: PropsInterface) {
     })();
   }, []);
 
-  if (wd) {
-    return (
-      <div
-        className={path === `/${lng}` ? classes[scrollStyle] : classes.header}
-      >
-        <div className={classes.navs_wrapper}>
-          <LangSwitcher lng={lng} />
-          <div className={classes.navs}>
-            <Link href={`/${lng}/catalog`}>Каталог</Link>
-            <Link href={`/${lng}/client`}>Клиентам</Link>
-            <Link href={`/${lng}/optom`}>Оптом</Link>
-            <Link href={`/${lng}/contacts`}>Контакты</Link>
+  return (
+    <div className={classes.header_wrapper}>
+      <div className={classes.desktop_h}>
+        <div
+          className={path === `/${lng}` ? classes[scrollStyle] : classes.header}
+        >
+          <div className={classes.navs_wrapper}>
+            <LangSwitcher lng={lng} />
+            <div className={classes.navs}>
+              <Link href={`/${lng}/catalog`}>Каталог</Link>
+              <Link href={`/${lng}/client`}>Клиентам</Link>
+              <Link href={`/${lng}/optom`}>Оптом</Link>
+              <Link href={`/${lng}/contacts`}>Контакты</Link>
+            </div>
           </div>
-        </div>
-        <div className={classes.logo_wrapper}>
-          <Link href={`/${lng}`} className={classes.logo}>
-            <img src="/icons/logo.svg" alt="logo" />
-          </Link>
-        </div>
-        <div className={classes.social_media}>
-          <a href={"tel:" + contacts?.attributes?.phone}>
-            {contacts?.attributes?.phone}
-          </a>
-          <div className={classes.icons}>
-            <a href={contacts?.attributes?.telegram || ""}>
-              <img src="/icons/header_telegram.svg" alt="header icon" />
+          <div className={classes.logo_wrapper}>
+            <Link href={`/${lng}`} className={classes.logo}>
+              <img src="/icons/logo.svg" alt="logo" />
+            </Link>
+          </div>
+          <div className={classes.social_media}>
+            <a href={"tel:" + contacts?.attributes?.phone}>
+              {contacts?.attributes?.phone}
             </a>
-            <a href={contacts?.attributes?.instagram || ""}>
-              <img src="/icons/header_insta.svg" alt="header icon" />
-            </a>
+            <div className={classes.icons}>
+              <a href={contacts?.attributes?.telegram || ""}>
+                <img src="/icons/header_telegram.svg" alt="header icon" />
+              </a>
+              <a href={contacts?.attributes?.instagram || ""}>
+                <img src="/icons/header_insta.svg" alt="header icon" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
-    );
-  } else {
-    return (
-      <>
+      <div className={classes.mobile_h}>
         {path === `/${lng}` && scrollStyleMobile === "header_mobile_home" ? (
           <div className={classes.header_mobile_home}>
             <Link href={`/${lng}`} className={classes.logo}>
@@ -103,7 +100,7 @@ export default function Header({ lng }: PropsInterface) {
             </Burger>
           </div>
         )}
-      </>
-    );
-  }
+      </div>
+    </div>
+  );
 }

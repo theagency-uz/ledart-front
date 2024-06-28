@@ -25,7 +25,13 @@ export default function ProductTabs({
         <div className={tabs.description}>{product.attributes.description}</div>
       );
     } else if (tab === 2) {
-      return <div className={tabs.description}>{"asd"}</div>;
+      return (
+        <div className={tabs.description}>
+          {
+            "Наличная и безналичная оплата. Цена доставки договорная или самовывоз - г.Ташкент, Алмазарский район, ул.Дилсарой 25."
+          }
+        </div>
+      );
     } else {
       return <div></div>;
     }
@@ -110,7 +116,11 @@ export default function ProductTabs({
           <h5>Условия доставки и оплаты</h5>
         </AccordionSummary>
         <AccordionDetails>
-          <p>{product.attributes.description}</p>
+          <p>
+            {
+              "Наличная и безналичная оплата. Цена доставки договорная или самовывоз - г.Ташкент, Алмазарский район, ул.Дилсарой 25."
+            }
+          </p>
         </AccordionDetails>
       </Accordion>
     </div>

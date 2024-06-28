@@ -1,3 +1,15 @@
+.header_wrapper {
+  position: fixed;
+  top: 10px;
+  left: 20px;
+  right: 20px;
+  z-index: 10;
+}
+
+.mobile_h {
+  display: none;
+}
+
 .header {
   display: flex;
   align-items: center;
@@ -6,14 +18,9 @@
   background-position: top;
   background-size: cover;
   background-repeat: no-repeat;
-  position: fixed;
-  top: 10px;
-  left: 20px;
-  right: 20px;
   padding: 5px 60px;
   color: #fff;
   border-radius: 100px;
-  z-index: 10;
 }
 
 .header_home {
@@ -27,7 +34,6 @@
   padding: 5px 60px;
   color: #fff;
   border-radius: 100px;
-  z-index: 10;
 }
 
 .navs_wrapper,
@@ -91,15 +97,22 @@
   }
 }
 @media (max-width: 992px) {
-  .header_mobile {
-    position: fixed;
+  .header_wrapper {
     top: 0px;
     left: 0px;
     right: 0px;
+  }
+  .mobile_h {
+    display: block;
+  }
+  .desktop_h {
+    display: none;
+  }
+  .header_mobile {
     padding: 20px 10px;
     border-radius: 0px;
     background-image: none;
-    z-index: 10;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -117,6 +130,5 @@
     padding: 20px 10px;
     border-radius: 0px;
     background-image: none;
-    z-index: 10;
   }
 }

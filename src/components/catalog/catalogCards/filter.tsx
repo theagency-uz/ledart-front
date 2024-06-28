@@ -172,6 +172,7 @@ export default function FilterCards({
                   const { name } = attributes;
                   return (
                     <ToggleButton
+                      key={id}
                       value={id}
                       aria-label="bold"
                       disableRipple={true}
@@ -203,7 +204,7 @@ export default function FilterCards({
           className={classes.filter}
         >
           <p className={classes.filter_p}>Бренд</p>
-          {brands.map((brand) => (
+          {brands.map((brand, index) => (
             <ToggleButton
               sx={{ border: "none", textTransform: "none", padding: "0" }}
               value={brand.id}
@@ -347,6 +348,7 @@ export default function FilterCards({
                       const { name } = attributes;
                       return (
                         <ToggleButton
+                          key={id}
                           value={id}
                           aria-label="bold"
                           disableRipple={true}

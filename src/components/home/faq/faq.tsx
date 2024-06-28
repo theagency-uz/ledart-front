@@ -32,6 +32,7 @@ export default function Faq({ lng }: { lng: string }) {
             const { question, answer } = attributes;
             return (
               <Accordion
+                key={id}
                 expanded={expanded === `panel${index}`}
                 onChange={handleChange(`panel${index}`)}
                 className={classes.faq}

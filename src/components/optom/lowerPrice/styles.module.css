@@ -1,10 +1,24 @@
 .lower_price {
-  background-color: #f7f7f7;
   padding-block: 60px;
+  background-color: #f7f7f7;
 }
 .cards {
   margin-top: 40px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--pixel20);
+}
+
+@media (max-width: 1023px) {
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 767px) {
+  .lower_price {
+    padding-block: 50px;
+  }
+  .cards {
+    grid-template-columns: 100%;
+  }
 }

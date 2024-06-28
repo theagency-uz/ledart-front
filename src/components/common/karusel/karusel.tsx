@@ -52,14 +52,14 @@ export default function Karusel() {
         <div className={classes.slide_track}>
           {data.map(({ image }, index) => {
             return (
-              <div className={classes.slide}>
+              <div className={classes.slide} key={index}>
                 <img src={image} height="100" width="100" alt="" />
               </div>
             );
           })}
           {data.map(({ image }, index) => {
             return (
-              <div className={classes.slide}>
+              <div className={classes.slide} key={index}>
                 <img src={image} height="100" width="100" alt="" />
               </div>
             );

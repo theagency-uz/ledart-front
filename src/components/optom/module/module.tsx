@@ -42,8 +42,8 @@ export default function Module({ lng }: { lng: string }) {
           </div>
           <div className={classes.card_content}>
             <div className={classes.card_advantages}>
-              {data.advantages.map((el) => (
-                <p className={classes.card_advantage}>
+              {data.advantages.map((el, index) => (
+                <p className={classes.card_advantage} key={index}>
                   <img src="/icons/optom/tick.svg" alt="tick" />{" "}
                   <span>{el}</span>
                 </p>
@@ -63,8 +63,8 @@ export default function Module({ lng }: { lng: string }) {
           <div className={classes.card_btn}>Модули других производителей</div>
           <div className={classes.card_content}>
             <div className={classes.card_advantages}>
-              {data.disadvantages.map((el) => (
-                <p className={classes.card_advantage}>
+              {data.disadvantages.map((el, index) => (
+                <p className={classes.card_advantage} key={index}>
                   <img src="/icons/optom/cross.svg" alt="tick" />{" "}
                   <span>{el}</span>
                 </p>

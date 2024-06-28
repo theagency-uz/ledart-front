@@ -28,6 +28,7 @@ export default function LowerPrice({ lng }: { lng: string }) {
         {data.map(({ title, p, icon }, index) => {
           return (
             <InfoCard
+              key={index}
               title={title}
               description={p}
               icon={icon}

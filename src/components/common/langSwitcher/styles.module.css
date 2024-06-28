@@ -1,5 +1,3 @@
-.lang_switch :global(input) {
-}
 .lang_switch :global(.MuiSelect-select) {
   font-size: var(--font12);
   font-weight: 500;

@@ -37,7 +37,7 @@ export default function ProductInfo({
           >
             {product.attributes.resolutions.data.map(({ attributes, id }) => {
               return (
-                <MenuItem value={attributes.value}>
+                <MenuItem value={attributes.value} key={id}>
                   Разрешение: {attributes.value}
                 </MenuItem>
               );
@@ -46,13 +46,15 @@ export default function ProductInfo({
         </FormControl>
       ) : null}
       <div className={classes.product_info_characteristics}>
-        {product.attributes.tech_characteristics.map(({ name, value }) => {
-          return (
-            <p>
-              <span>{name}:</span> <span>{value}</span>
-            </p>
-          );
-        })}
+        {product.attributes.tech_characteristics.map(
+          ({ name, value }, index) => {
+            return (
+              <p key={index}>
+                <span>{name}:</span> <span>{value}</span>
+              </p>
+            );
+          }
+        )}
       </div>
       <div className={classes.product_info_bottom}>
         <OrderModal

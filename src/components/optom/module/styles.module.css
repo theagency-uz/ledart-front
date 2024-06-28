@@ -13,8 +13,8 @@
   max-width: 90%;
 }
 .view_btn {
-  padding-block: 14px;
   width: 40%;
+  padding-block: 14px;
 }
 
 .module_bottom {
@@ -63,4 +63,41 @@
 .card_image img {
   width: 130%;
   object-fit: contain;
+}
+
+@media (max-width: 992px) {
+  .module_top {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .module_top h2 {
+    margin-bottom: 20px;
+  }
+  .view_btn {
+    width: 100%;
+  }
+  .module_bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 30px;
+  }
+  .card {
+    padding: 10px;
+    margin: 0 -10px;
+  }
+  .card_content {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+  }
+  .card_advantage {
+    gap: 10px;
+  }
+  .card_image {
+    right: 0;
+  }
+  .card_image img {
+    width: 100%;
+  }
 }
